@@ -1,0 +1,22 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    EzSystems\EzPlatformQueryLanguage\API\Repository\EZQL:
+        alias: EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL
+        public: true
+
+    EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL: ~
+
+    EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\EZQLProxyInterface:
+        alias: EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\EZQLProxy
+
+    EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\EZQLProxy: ~
+
+    ### eZ Platform Integration
+
+    EzSystems\EzPlatformQueryLanguage\Core\QueryType\EZQLQueryType:
+        tags:
+            - { name: ezpublish.query_type, alias: EZQL }
