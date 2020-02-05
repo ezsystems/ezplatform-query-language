@@ -1,0 +1,1 @@
+# ezplatform-query-language
