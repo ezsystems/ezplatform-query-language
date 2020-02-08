@@ -35,6 +35,6 @@ in the `config/bundles.php` file of your project:
 
 return [
     // ...
-    EzSystems\EzPlatformQueryLanguage::class => ['all' => true],
+    EzSystems\EzPlatformQueryLanguageBundle\EzPlatformQueryLanguageBundle::class => ['all' => true],
 ];
 ```
