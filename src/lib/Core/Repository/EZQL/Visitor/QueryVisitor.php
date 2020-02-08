@@ -22,6 +22,7 @@ use eZ\Publish\API\Repository\Values\Content\Query\Criterion\MatchAll;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\MatchNone;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\UserMetadata;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\Visibility;
+use EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\CriterionBinding\CriterionBinding;
 use EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Exception\MissingParameterException;
 use EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\EZQLOperator;
 use EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser\Context;
@@ -31,12 +32,18 @@ use RuntimeException;
 
 final class QueryVisitor extends EZQLBaseVisitor
 {
+    private const BUILD_IN_CRITERION_NAMESPACE = 'eZ\\Publish\\API\\Repository\\Values\\Content\Query\\Criterion\\';
+
     /** @var array */
     private $parameters;
 
-    public function __construct(array $parameters = [])
+    /** @var array<string,CriterionBinding> */
+    private $criterions;
+
+    public function __construct(array $criterions, array $parameters = [])
     {
         $this->parameters = $parameters;
+        $this->criterions = $criterions;
     }
 
     public function visitSelectContent(Context\SelectContentContext $context): QueryVisitorResult
@@ -353,7 +360,7 @@ final class QueryVisitor extends EZQLBaseVisitor
 
         return $this->resolveNegation(
             function (string $op) use ($class, $value): Criterion {
-                return $this->createCriterion($class, [$op, $value]);
+                return $this->createCriterion($class, $op, $value);
             },
             $context->op->accept($this)
         );
@@ -441,17 +448,12 @@ final class QueryVisitor extends EZQLBaseVisitor
         return $criterion;
     }
 
-    private function createCriterion(string $class, array $args): Criterion
+    private function createCriterion(string $class, string $operator, $value, array $attributes = []): Criterion
     {
         if (strpos($class, '\\') === false) {
-            $class = 'eZ\\Publish\\API\\Repository\\Values\\Content\Query\\Criterion\\' . $class;
+            $class = self::BUILD_IN_CRITERION_NAMESPACE . $class;
         }
 
-        $criterion = new $class(...$args);
-        if (!$criterion instanceof Criterion) {
-            throw new RuntimeException("$class must implement " . Criterion::class);
-        }
-
-        return $criterion;
+        return $this->criterions[$class]->instantiate($operator, $value, $attributes);
     }
 }

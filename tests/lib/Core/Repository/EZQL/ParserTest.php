@@ -18,6 +18,7 @@ use eZ\Publish\API\Repository\Values\Content\Query\Criterion\FieldRelation;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\FullText;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\IsFieldEmpty;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\Location\IsMainLocation;
+use eZ\Publish\API\Repository\Values\Content\Query\Criterion\LocationId;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\LogicalAnd;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\LogicalNot;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\LogicalOr;
@@ -28,6 +29,7 @@ use eZ\Publish\API\Repository\Values\Content\Query\Criterion\UserMetadata;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\Visibility;
 use eZ\Publish\API\Repository\Values\Content\Query\SortClause\ContentName;
 use eZ\Publish\API\Repository\Values\Content\Query\SortClause\Location\Priority;
+use EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\CriterionBinding\CriterionBinding;
 use EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\ErrorListener\ExceptionErrorListener;
 use EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Exception\MissingParameterException;
 use EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Exception\SyntaxErrorException;
@@ -380,26 +382,31 @@ final class ParserTest extends TestCase
             ]),
         ];
 
+        yield 'LocationId' => [
+            'LocationId = 2',
+            new LocationId(2),
+        ];
+
         foreach ($this->generateOperators() as $op => [$tail, $value]) {
             yield "class $op" => [
                 ExampleCriterion::class . " $tail",
-                new ExampleCriterion($op, $value),
+                new ExampleCriterion($op, $value, []),
             ];
         }
 
         yield 'operator: and' => [
             sprintf('%1$s = "foo" AND %1$s = "bar"', ExampleCriterion::class),
             new LogicalAnd([
-                new ExampleCriterion(Operator::EQ, 'foo'),
-                new ExampleCriterion(Operator::EQ, 'bar'),
+                new ExampleCriterion(Operator::EQ, 'foo', []),
+                new ExampleCriterion(Operator::EQ, 'bar', []),
             ]),
         ];
 
         yield 'operator: or' => [
             sprintf('%1$s = "foo" OR %1$s = "bar"', ExampleCriterion::class),
             new LogicalOr([
-                new ExampleCriterion(Operator::EQ, 'foo'),
-                new ExampleCriterion(Operator::EQ, 'bar'),
+                new ExampleCriterion(Operator::EQ, 'foo', []),
+                new ExampleCriterion(Operator::EQ, 'bar', []),
             ]),
         ];
 
@@ -407,10 +414,10 @@ final class ParserTest extends TestCase
             sprintf('(%1$s = "foo" OR %1$s = "bar") AND %1$s = "baz"', ExampleCriterion::class),
             new LogicalAnd([
                 new LogicalOr([
-                    new ExampleCriterion(Operator::EQ, 'foo'),
-                    new ExampleCriterion(Operator::EQ, 'bar'),
+                    new ExampleCriterion(Operator::EQ, 'foo', []),
+                    new ExampleCriterion(Operator::EQ, 'bar', []),
                 ]),
-                new ExampleCriterion(Operator::EQ, 'baz'),
+                new ExampleCriterion(Operator::EQ, 'baz', []),
             ]),
         ];
     }
@@ -580,8 +587,16 @@ final class ParserTest extends TestCase
         $parser->removeErrorListeners();
         $parser->addErrorListener(new ExceptionErrorListener());
 
-        return $parser->stmt()->accept(
-            new QueryVisitor($params)
-        );
+        $visitor = new QueryVisitor([
+            LocationId::class => CriterionBinding::fromSingleArgCriterion(LocationId::class),
+            ExampleCriterion::class => new CriterionBinding(
+                ExampleCriterion::class,
+                static function (...$args): ExampleCriterion {
+                    return new ExampleCriterion(...$args);
+                }
+            ),
+        ], $params);
+
+        return $parser->stmt()->accept($visitor);
     }
 }

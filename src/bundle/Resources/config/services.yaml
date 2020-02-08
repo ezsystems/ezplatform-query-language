@@ -13,7 +13,14 @@ services:
     EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\EZQLProxyInterface:
         alias: EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\EZQLProxy
 
-    EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\EZQLProxy: ~
+    EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\EZQLProxy:
+        arguments:
+            $criterionBindingsProviders: !tagged ezplatform.ezql.criterion_bindings_provider
+
+    EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\CriterionBinding\Provider\BuildInCriterionBindingsProvider:
+        tags:
+            - { name: ezplatform.ezql.criterion_bindings_provider }
+
 
     ### eZ Platform Integration
 
