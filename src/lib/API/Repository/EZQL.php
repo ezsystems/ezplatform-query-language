@@ -13,8 +13,23 @@ use EzSystems\EzPlatformQueryLanguage\API\Repository\EZQL\EZQLStatement;
 
 interface EZQL
 {
+    /**
+     * Prepare an EZQL statement for execution.
+     */
     public function prepare(string $query): EZQLStatement;
 
+    /**
+     * Prepare and execute an EZQL statement.
+     *
+     * Shortcut for:
+     *
+     *     $stmt = $ezql->prepare($query);
+     *     $stmt->setParams($params);
+     *     $stmt->setLanguageFilter($languageFilter);
+     *     $stmt->setFilterOnPermissions($filterOnUserPermissions);
+     *
+     *     $results = $stmt->execute();
+     */
     public function find(
         string $query,
         array $params = [],
