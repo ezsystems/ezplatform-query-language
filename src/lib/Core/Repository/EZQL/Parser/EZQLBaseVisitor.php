@@ -4,6 +4,7 @@
  * @copyright Copyright (C) eZ Systems AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+
 namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser;
 
 use Antlr\Antlr4\Runtime\Tree\AbstractParseTreeVisitor;
@@ -109,17 +110,6 @@ class EZQLBaseVisitor extends AbstractParseTreeVisitor implements EZQLVisitor
      * The default implementation returns the result of calling
      * {@see self::visitChildren()} on `context`.
      */
-    public function visitUserMetadataExpr(Context\UserMetadataExprContext $context)
-    {
-        return $this->visitChildren($context);
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * The default implementation returns the result of calling
-     * {@see self::visitChildren()} on `context`.
-     */
     public function visitIsFieldEmptyExpr(Context\IsFieldEmptyExprContext $context)
     {
         return $this->visitChildren($context);
@@ -142,7 +132,172 @@ class EZQLBaseVisitor extends AbstractParseTreeVisitor implements EZQLVisitor
      * The default implementation returns the result of calling
      * {@see self::visitChildren()} on `context`.
      */
+    public function visitLocationRemoteIdExpr(Context\LocationRemoteIdExprContext $context)
+    {
+        return $this->visitChildren($context);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * The default implementation returns the result of calling
+     * {@see self::visitChildren()} on `context`.
+     */
+    public function visitVisibilityExpr(Context\VisibilityExprContext $context)
+    {
+        return $this->visitChildren($context);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * The default implementation returns the result of calling
+     * {@see self::visitChildren()} on `context`.
+     */
+    public function visitContentIdExpr(Context\ContentIdExprContext $context)
+    {
+        return $this->visitChildren($context);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * The default implementation returns the result of calling
+     * {@see self::visitChildren()} on `context`.
+     */
+    public function visitRemoteIdExpr(Context\RemoteIdExprContext $context)
+    {
+        return $this->visitChildren($context);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * The default implementation returns the result of calling
+     * {@see self::visitChildren()} on `context`.
+     */
+    public function visitObjectStateIdExpr(Context\ObjectStateIdExprContext $context)
+    {
+        return $this->visitChildren($context);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * The default implementation returns the result of calling
+     * {@see self::visitChildren()} on `context`.
+     */
+    public function visitLanguageCodeExpr(Context\LanguageCodeExprContext $context)
+    {
+        return $this->visitChildren($context);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * The default implementation returns the result of calling
+     * {@see self::visitChildren()} on `context`.
+     */
+    public function visitIsMainLocationExpr(Context\IsMainLocationExprContext $context)
+    {
+        return $this->visitChildren($context);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * The default implementation returns the result of calling
+     * {@see self::visitChildren()} on `context`.
+     */
+    public function visitLocationPriorityExpr(Context\LocationPriorityExprContext $context)
+    {
+        return $this->visitChildren($context);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * The default implementation returns the result of calling
+     * {@see self::visitChildren()} on `context`.
+     */
+    public function visitContentTypeIdentifierExpr(Context\ContentTypeIdentifierExprContext $context)
+    {
+        return $this->visitChildren($context);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * The default implementation returns the result of calling
+     * {@see self::visitChildren()} on `context`.
+     */
+    public function visitLocationIdExpr(Context\LocationIdExprContext $context)
+    {
+        return $this->visitChildren($context);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * The default implementation returns the result of calling
+     * {@see self::visitChildren()} on `context`.
+     */
+    public function visitFulltextExpr(Context\FulltextExprContext $context)
+    {
+        return $this->visitChildren($context);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * The default implementation returns the result of calling
+     * {@see self::visitChildren()} on `context`.
+     */
+    public function visitParentLocationIdExpr(Context\ParentLocationIdExprContext $context)
+    {
+        return $this->visitChildren($context);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * The default implementation returns the result of calling
+     * {@see self::visitChildren()} on `context`.
+     */
+    public function visitCriterionExpr(Context\CriterionExprContext $context)
+    {
+        return $this->visitChildren($context);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * The default implementation returns the result of calling
+     * {@see self::visitChildren()} on `context`.
+     */
+    public function visitUserMetadataExpr(Context\UserMetadataExprContext $context)
+    {
+        return $this->visitChildren($context);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * The default implementation returns the result of calling
+     * {@see self::visitChildren()} on `context`.
+     */
     public function visitMatchAllExpr(Context\MatchAllExprContext $context)
+    {
+        return $this->visitChildren($context);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * The default implementation returns the result of calling
+     * {@see self::visitChildren()} on `context`.
+     */
+    public function visitLocationDepthExpr(Context\LocationDepthExprContext $context)
     {
         return $this->visitChildren($context);
     }
@@ -186,7 +341,7 @@ class EZQLBaseVisitor extends AbstractParseTreeVisitor implements EZQLVisitor
      * The default implementation returns the result of calling
      * {@see self::visitChildren()} on `context`.
      */
-    public function visitVisibilityExpr(Context\VisibilityExprContext $context)
+    public function visitSubtreeExpr(Context\SubtreeExprContext $context)
     {
         return $this->visitChildren($context);
     }
@@ -219,6 +374,17 @@ class EZQLBaseVisitor extends AbstractParseTreeVisitor implements EZQLVisitor
      * The default implementation returns the result of calling
      * {@see self::visitChildren()} on `context`.
      */
+    public function visitAncestorExpr(Context\AncestorExprContext $context)
+    {
+        return $this->visitChildren($context);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * The default implementation returns the result of calling
+     * {@see self::visitChildren()} on `context`.
+     */
     public function visitMatchNoneExpr(Context\MatchNoneExprContext $context)
     {
         return $this->visitChildren($context);
@@ -241,6 +407,17 @@ class EZQLBaseVisitor extends AbstractParseTreeVisitor implements EZQLVisitor
      * The default implementation returns the result of calling
      * {@see self::visitChildren()} on `context`.
      */
+    public function visitSectionIdExpr(Context\SectionIdExprContext $context)
+    {
+        return $this->visitChildren($context);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * The default implementation returns the result of calling
+     * {@see self::visitChildren()} on `context`.
+     */
     public function visitCreatedExpr(Context\CreatedExprContext $context)
     {
         return $this->visitChildren($context);
@@ -252,40 +429,7 @@ class EZQLBaseVisitor extends AbstractParseTreeVisitor implements EZQLVisitor
      * The default implementation returns the result of calling
      * {@see self::visitChildren()} on `context`.
      */
-    public function visitIsMainLocationExpr(Context\IsMainLocationExprContext $context)
-    {
-        return $this->visitChildren($context);
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * The default implementation returns the result of calling
-     * {@see self::visitChildren()} on `context`.
-     */
-    public function visitLocationPriorityExpr(Context\LocationPriorityExprContext $context)
-    {
-        return $this->visitChildren($context);
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * The default implementation returns the result of calling
-     * {@see self::visitChildren()} on `context`.
-     */
-    public function visitFulltextExpr(Context\FulltextExprContext $context)
-    {
-        return $this->visitChildren($context);
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * The default implementation returns the result of calling
-     * {@see self::visitChildren()} on `context`.
-     */
-    public function visitCriterionExpr(Context\CriterionExprContext $context)
+    public function visitContentTypeIdExpr(Context\ContentTypeIdExprContext $context)
     {
         return $this->visitChildren($context);
     }

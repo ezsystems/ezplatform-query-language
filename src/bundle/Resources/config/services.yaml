@@ -17,11 +17,6 @@ services:
         arguments:
             $criterionBindingsProviders: !tagged ezplatform.ezql.criterion_bindings_provider
 
-    EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\CriterionBinding\Provider\BuildInCriterionBindingsProvider:
-        tags:
-            - { name: ezplatform.ezql.criterion_bindings_provider }
-
-
     ### eZ Platform Integration
 
     EzSystems\EzPlatformQueryLanguage\Core\QueryType\EZQLQueryType:
