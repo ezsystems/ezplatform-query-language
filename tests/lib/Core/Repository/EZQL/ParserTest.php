@@ -12,11 +12,16 @@ use Antlr\Antlr4\Runtime\CommonTokenStream;
 use Antlr\Antlr4\Runtime\InputStream;
 use eZ\Publish\API\Repository\Values\Content\LocationQuery;
 use eZ\Publish\API\Repository\Values\Content\Query;
+use eZ\Publish\API\Repository\Values\Content\Query\Criterion\Ancestor;
+use eZ\Publish\API\Repository\Values\Content\Query\Criterion\ContentId;
+use eZ\Publish\API\Repository\Values\Content\Query\Criterion\ContentTypeId;
+use eZ\Publish\API\Repository\Values\Content\Query\Criterion\ContentTypeIdentifier;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\DateMetadata;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\Field;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\FieldRelation;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\FullText;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\IsFieldEmpty;
+use eZ\Publish\API\Repository\Values\Content\Query\Criterion\LanguageCode;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\Location\IsMainLocation;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\LocationId;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\LogicalAnd;
@@ -24,7 +29,12 @@ use eZ\Publish\API\Repository\Values\Content\Query\Criterion\LogicalNot;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\LogicalOr;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\MatchAll;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\MatchNone;
+use eZ\Publish\API\Repository\Values\Content\Query\Criterion\ObjectStateId;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\Operator;
+use eZ\Publish\API\Repository\Values\Content\Query\Criterion\ParentLocationId;
+use eZ\Publish\API\Repository\Values\Content\Query\Criterion\RemoteId;
+use eZ\Publish\API\Repository\Values\Content\Query\Criterion\SectionId;
+use eZ\Publish\API\Repository\Values\Content\Query\Criterion\Subtree;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\UserMetadata;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\Visibility;
 use eZ\Publish\API\Repository\Values\Content\Query\SortClause\ContentName;
@@ -323,27 +333,22 @@ final class ParserTest extends TestCase
         ];
 
         foreach ($this->generateLocationPriorityCriterion() as $name => [$expression, $criterion]) {
-            yield $name => [
-                $expression,
-                $criterion,
-            ];
+            yield $name => [$expression, $criterion];
+        }
+
+        foreach ($this->generateLocationDepthCriterion() as $name => [$expression, $criterion]) {
+            yield $name => [$expression, $criterion];
         }
 
         foreach ([DateMetadata::CREATED, DateMetadata::MODIFIED] as $target) {
             foreach ($this->dataProviderForDateMetadata($target) as $name => [$expression, $criterion]) {
-                yield $name => [
-                    $expression,
-                    $criterion,
-                ];
+                yield $name => [$expression, $criterion];
             }
         }
 
         foreach ([UserMetadata::MODIFIER, UserMetadata::GROUP, UserMetadata::OWNER] as $target) {
             foreach ($this->generateUserMetadata($target) as $name => [$expression, $criterion]) {
-                yield $name => [
-                    $expression,
-                    $criterion,
-                ];
+                yield $name => [$expression, $criterion];
             }
         }
 
@@ -382,9 +387,109 @@ final class ParserTest extends TestCase
             ]),
         ];
 
-        yield 'LocationId' => [
-            'LocationId = 2',
+        yield 'ancestor =' => [
+            'ANCESTOR = "/1/2/54/"',
+            new Ancestor('/1/2/54/'),
+        ];
+
+        yield 'content id =' => [
+            'CONTENT ID = 2',
+            new ContentId(2),
+        ];
+
+        yield 'content id in' => [
+            'CONTENT ID IN (1, 2, 3)',
+            new ContentId([1, 2, 3]),
+        ];
+
+        yield 'content type id =' => [
+            'CONTENT TYPE ID = 2',
+            new ContentTypeId(2),
+        ];
+
+        yield 'content type id id' => [
+            'CONTENT TYPE ID IN (1, 2, 3)',
+            new ContentTypeId([1, 2, 3]),
+        ];
+
+        yield 'content type identifier =' => [
+            'CONTENT TYPE IDENTIFIER = "article"',
+            new ContentTypeIdentifier('article'),
+        ];
+
+        yield 'content type identifier id' => [
+            'CONTENT TYPE IDENTIFIER IN ("article", "blog_post", "news")',
+            new ContentTypeIdentifier(['article', 'blog_post', 'news']),
+        ];
+
+        yield 'language code =' => [
+            'LANGUAGE CODE = "eng-GB"',
+            new LanguageCode('eng-GB'),
+        ];
+
+        yield 'language code in' => [
+            'LANGUAGE CODE IN ("eng-GB", "eng-US")',
+            new LanguageCode(['eng-GB', 'eng-US']),
+        ];
+
+        yield 'location id =' => [
+            'LOCATION ID = 2',
             new LocationId(2),
+        ];
+
+        yield 'location id in' => [
+            'LOCATION ID IN (1, 2, 3)',
+            new LocationId([1, 2, 3]),
+        ];
+
+        yield 'parent location id =' => [
+            'PARENT LOCATION ID = 2',
+            new ParentLocationId(2),
+        ];
+
+        yield 'parent location id in' => [
+            'PARENT LOCATION ID IN (1, 2, 3)',
+            new ParentLocationId([1, 2, 3]),
+        ];
+
+        yield 'object state =' => [
+            'OBJECT STATE ID = 2',
+            new ObjectStateId(2),
+        ];
+
+        yield 'object state in' => [
+            'OBJECT STATE ID IN (2, 4, 6)',
+            new ObjectStateId([2, 4, 6]),
+        ];
+
+        yield 'remote id =' => [
+            'REMOTE ID = "63dc3ae53b2e031a3a5315fb2ede885d"',
+            new RemoteId('63dc3ae53b2e031a3a5315fb2ede885d'),
+        ];
+
+        yield 'remote id in' => [
+            'REMOTE ID IN ("0cc175b9c0f1b6a831c399e269772661", "92eb5ffee6ae2fec3ad71c777531578f", "4a8a08f09d37b73795649038408b5f33")',
+            new RemoteId(['0cc175b9c0f1b6a831c399e269772661', '92eb5ffee6ae2fec3ad71c777531578f', '4a8a08f09d37b73795649038408b5f33']),
+        ];
+
+        yield 'section id =' => [
+            'SECTION ID = 2',
+            new SectionId(2),
+        ];
+
+        yield 'section id in' => [
+            'SECTION ID IN (1, 2, 3)',
+            new SectionId([1, 2, 3]),
+        ];
+
+        yield 'subtree =' => [
+            'SUBTREE = "/1/2/54/"',
+            new Subtree('/1/2/54/'),
+        ];
+
+        yield 'subtree in' => [
+            'SUBTREE IN ("/1/2/54/", "/1/2/56/", "/1/2/58/")',
+            new Subtree(['/1/2/54/', '/1/2/56/', '/1/2/58/']),
         ];
 
         foreach ($this->generateOperators() as $op => [$tail, $value]) {
@@ -447,6 +552,54 @@ final class ParserTest extends TestCase
         yield 'location priority <=' => [
             'LOCATION PRIORITY <= 100',
             new Query\Criterion\Location\Priority(Operator::LTE, 100),
+        ];
+    }
+
+    public function generateLocationDepthCriterion(): iterable
+    {
+        yield 'location depth between' => [
+            'LOCATION DEPTH BETWEEN 1..10',
+            new Query\Criterion\Location\Depth(Operator::BETWEEN, [1, 10]),
+        ];
+
+        yield 'location depth =' => [
+            'LOCATION DEPTH = 100',
+            new Query\Criterion\Location\Depth(Operator::EQ, 100),
+        ];
+
+        yield 'location depth !=' => [
+            'LOCATION DEPTH != 100',
+            new LogicalNot(new Query\Criterion\Location\Depth(Operator::EQ, 100)),
+        ];
+
+        yield 'location depth >' => [
+            'LOCATION DEPTH > 100',
+            new Query\Criterion\Location\Depth(Operator::GT, 100),
+        ];
+
+        yield 'location depth >=' => [
+            'LOCATION DEPTH >= 100',
+            new Query\Criterion\Location\Depth(Operator::GTE, 100),
+        ];
+
+        yield 'location depth <' => [
+            'LOCATION DEPTH < 100',
+            new Query\Criterion\Location\Depth(Operator::LT, 100),
+        ];
+
+        yield 'location depth <=' => [
+            'LOCATION DEPTH <= 100',
+            new Query\Criterion\Location\Depth(Operator::LTE, 100),
+        ];
+
+        yield 'location depth in' => [
+            'LOCATION DEPTH IN (1, 10, 100)',
+            new Query\Criterion\Location\Depth(Operator::IN, [1, 10, 100]),
+        ];
+
+        yield 'location depth not in' => [
+            'LOCATION DEPTH NOT IN (1, 10, 100)',
+            new LogicalNot(new Query\Criterion\Location\Depth(Operator::IN, [1, 10, 100])),
         ];
     }
 
@@ -588,7 +741,6 @@ final class ParserTest extends TestCase
         $parser->addErrorListener(new ExceptionErrorListener());
 
         $visitor = new QueryVisitor([
-            LocationId::class => CriterionBinding::fromSingleArgCriterion(LocationId::class),
             ExampleCriterion::class => new CriterionBinding(
                 ExampleCriterion::class,
                 static function (...$args): ExampleCriterion {

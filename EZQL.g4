@@ -40,10 +40,23 @@ expr:
     | K_FIELD field=ID op=operator val=value                                    #fieldExpr
     | K_FIELD K_RELATION field=ID op=operator val=value                         #fieldRelationExpr
     | K_LOCATION K_PRIORITY op=operator val=value                               #locationPriorityExpr
+    | K_LOCATION K_DEPTH op=operator val=value                                  #locationDepthExpr
     | K_CREATED op=operator val=value                                           #createdExpr
     | K_MODIFIED op=operator val=value                                          #modifiedExpr
     | K_FULLTEXT val=value fuzziness? boosting?                                 #fulltextExpr
     | target=userMetadataTarget op=operator val=value                           #userMetadataExpr
+    | K_ANCESTOR op=operator val=value                                          #ancestorExpr
+    | K_CONTENT K_ID op=operator val=value                                      #contentIdExpr
+    | K_CONTENT K_TYPE K_ID op=operator val=value                               #contentTypeIdExpr
+    | K_CONTENT K_TYPE K_IDENTIFIER op=operator val=value                       #contentTypeIdentifierExpr
+    | K_LANGUAGE K_CODE op=operator val=value                                   #languageCodeExpr
+    | K_LOCATION K_ID op=operator val=value                                     #locationIdExpr
+    | K_LOCATION K_REMOTE K_ID op=operator val=value                            #locationRemoteIdExpr
+    | K_OBJECT K_STATE K_ID op=operator val=value                               #objectStateIdExpr
+    | K_PARENT K_LOCATION K_ID op=operator val=value                            #parentLocationIdExpr
+    | K_REMOTE K_ID op=operator val=value                                       #remoteIdExpr
+    | K_SECTION K_ID op=operator val=value                                      #sectionIdExpr
+    | K_SUBTREE op=operator val=value                                           #subtreeExpr
     | clazz=ID op=operator val=value                                            #criterionExpr
     | left=expr K_AND right=expr                                                #andExpr
     | left=expr K_OR right=expr                                                 #orExpr
@@ -91,6 +104,7 @@ userMetadataTarget:
     target=(K_OWNER|K_GROUP|K_MODIFIER);
 
 K_ALL: [Aa][Ll][Ll];
+K_ANCESTOR: [Aa][Nn][Cc][Ee][Ss][Tt][Oo][Rr];
 K_AND: [Aa][Nn][Dd];
 K_ASC: [Aa][Ss][Cc];
 K_BETWEEN: [Bb][Ee][Tt][Ww][Ee][Ee][Nn];
@@ -98,8 +112,10 @@ K_BOOST: [Bb][Oo][Oo][Ss][Tt];
 K_BY: [Bb][Yy];
 K_CONTAINS: [Cc][Oo][Nn][Tt][Aa][Ii][Nn][Ss];
 K_CONTENT: [Cc][Oo][Nn][Tt][Ee][Nn][Tt];
+K_CODE: [Cc][Oo][Dd][Ee];
 K_CREATED: [Cc][Rr][Ee][Aa][Tt][Ee][Dd];
 K_DESC: [Dd][Ee][Ss][Cc];
+K_DEPTH: [Dd][Ee][Pp][Th][Hh];
 K_EMPTY: [Ee][Mm][Pp][Tt][Yy];
 K_FALSE: [Ff][Aa][Ll][Ss][Ee];
 K_FULLTEXT: [Ff][Uu][Ll][Ll][Tt][Ee][Xx][Tt];
@@ -108,9 +124,12 @@ K_FIELD: [Ff][Ii][Ee][Ll][Dd];
 K_FILTER: [Ff][Ii][Ll][Tt][Ee][Rr];
 K_GROUP: [Gg][Rr][Oo][Uu][Pp];
 K_HIDDEN: [Hh][Ii][Dd][Dd][Ee][Nn];
+K_ID: [Ii][Dd];
+K_IDENTIFIER: [Ii][Dd][Ee][Nn][Tt][Ii][Ff][Ii][Ee][Rr];
 K_IN: [Ii][Nn];
 K_INFO: [Ii][Nn][Ff][Oo];
 K_IS: [Ii][Ss];
+K_LANGUAGE: [Ll][Aa][Nn][Gg][Uu][Aa][Gg][Ee];
 K_LIKE: [Ll][Ii][Kk][Ee];
 K_LIMIT: [Ll][Ii][Mm][Ii][Tt];
 K_LOCATION: [Ll][Oo][Cc][Aa][Tt][Ii][Oo][Nn];
@@ -120,15 +139,22 @@ K_MODIFIER: [Mm][Oo][Dd][Ii][Ff][Ii][Ee][Rr];
 K_MODIFIED: [Mm][Oo][Dd][Ii][Ff][Ii][Ee][Dd];
 K_NONE: [Nn][Oo][Nn][Ee];
 K_NOT: [Nn][Oo][Tt];
+K_OBJECT: [Oo][Bb][Jj][Ee][Cc][Tt];
 K_OFFSET: [Oo][Ff][Ff][Ss][Ee][Tt];
 K_OR: [Oo][Rr];
 K_ORDER: [Oo][Rr][Dd][Ee][Rr];
 K_OWNER: [Oo][Ww][Nn][Ee][Rr];
+K_PARENT: [Pp][Aa][Rr][Ee][Nn][Tt];
 K_PRIORITY: [Pp][Rr][Ii][Oo][Rr][Ii][Tt][Yy];
+K_REMOTE: [Rr][Ee][Mm][Oo][Tt][Ee];
 K_RELATION: [Rr][Ee][Ll][Aa][Tt][Ii][Oo][Nn];
+K_STATE: [Ss][Tt][Aa][Tt][Ee];
 K_QUERY: [Qq][Uu][Ee][Rr][Yy];
+K_SECTION: [Ss][Ee][Cc][Tt][Ii][Oo][Nn];
+K_SUBTREE: [Ss][Uu][Bb][Tt][Rr][Ee][Ee];
 K_SELECT: [Ss][Ee][Ll][Ee][Cc][Tt];
 K_TRUE: [Tt][Rr][Uu][Ee];
+K_TYPE: [Tt][Yy][Pp][Ee];
 K_VISIBLE: [Vv][Ii][Ss][Ii][Bb][Ll][Ee];
 
 EQ: '=';

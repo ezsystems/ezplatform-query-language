@@ -4,6 +4,7 @@
  * @copyright Copyright (C) eZ Systems AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+
 namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
     use Antlr\Antlr4\Runtime\Atn\ATN;
     use Antlr\Antlr4\Runtime\Atn\ATNDeserializer;
@@ -28,57 +29,70 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
         public const T__3 = 4;
         public const T__4 = 5;
         public const K_ALL = 6;
-        public const K_AND = 7;
-        public const K_ASC = 8;
-        public const K_BETWEEN = 9;
-        public const K_BOOST = 10;
-        public const K_BY = 11;
-        public const K_CONTAINS = 12;
-        public const K_CONTENT = 13;
-        public const K_CREATED = 14;
-        public const K_DESC = 15;
-        public const K_EMPTY = 16;
-        public const K_FALSE = 17;
-        public const K_FULLTEXT = 18;
-        public const K_FUZZINESS = 19;
-        public const K_FIELD = 20;
-        public const K_FILTER = 21;
-        public const K_GROUP = 22;
-        public const K_HIDDEN = 23;
-        public const K_IN = 24;
-        public const K_INFO = 25;
-        public const K_IS = 26;
-        public const K_LIKE = 27;
-        public const K_LIMIT = 28;
-        public const K_LOCATION = 29;
-        public const K_MAIN = 30;
-        public const K_MATCH = 31;
-        public const K_MODIFIER = 32;
-        public const K_MODIFIED = 33;
-        public const K_NONE = 34;
-        public const K_NOT = 35;
-        public const K_OFFSET = 36;
-        public const K_OR = 37;
-        public const K_ORDER = 38;
-        public const K_OWNER = 39;
-        public const K_PRIORITY = 40;
-        public const K_RELATION = 41;
-        public const K_QUERY = 42;
-        public const K_SELECT = 43;
-        public const K_TRUE = 44;
-        public const K_VISIBLE = 45;
-        public const EQ = 46;
-        public const NEQ = 47;
-        public const GT = 48;
-        public const GTE = 49;
-        public const LT = 50;
-        public const LTE = 51;
-        public const INT = 52;
-        public const DOUBLE = 53;
-        public const STRING = 54;
-        public const PARAMETER_NAME = 55;
-        public const ID = 56;
-        public const WS = 57;
+        public const K_ANCESTOR = 7;
+        public const K_AND = 8;
+        public const K_ASC = 9;
+        public const K_BETWEEN = 10;
+        public const K_BOOST = 11;
+        public const K_BY = 12;
+        public const K_CONTAINS = 13;
+        public const K_CONTENT = 14;
+        public const K_CODE = 15;
+        public const K_CREATED = 16;
+        public const K_DESC = 17;
+        public const K_DEPTH = 18;
+        public const K_EMPTY = 19;
+        public const K_FALSE = 20;
+        public const K_FULLTEXT = 21;
+        public const K_FUZZINESS = 22;
+        public const K_FIELD = 23;
+        public const K_FILTER = 24;
+        public const K_GROUP = 25;
+        public const K_HIDDEN = 26;
+        public const K_ID = 27;
+        public const K_IDENTIFIER = 28;
+        public const K_IN = 29;
+        public const K_INFO = 30;
+        public const K_IS = 31;
+        public const K_LANGUAGE = 32;
+        public const K_LIKE = 33;
+        public const K_LIMIT = 34;
+        public const K_LOCATION = 35;
+        public const K_MAIN = 36;
+        public const K_MATCH = 37;
+        public const K_MODIFIER = 38;
+        public const K_MODIFIED = 39;
+        public const K_NONE = 40;
+        public const K_NOT = 41;
+        public const K_OBJECT = 42;
+        public const K_OFFSET = 43;
+        public const K_OR = 44;
+        public const K_ORDER = 45;
+        public const K_OWNER = 46;
+        public const K_PARENT = 47;
+        public const K_PRIORITY = 48;
+        public const K_REMOTE = 49;
+        public const K_RELATION = 50;
+        public const K_STATE = 51;
+        public const K_QUERY = 52;
+        public const K_SECTION = 53;
+        public const K_SUBTREE = 54;
+        public const K_SELECT = 55;
+        public const K_TRUE = 56;
+        public const K_TYPE = 57;
+        public const K_VISIBLE = 58;
+        public const EQ = 59;
+        public const NEQ = 60;
+        public const GT = 61;
+        public const GTE = 62;
+        public const LT = 63;
+        public const LTE = 64;
+        public const INT = 65;
+        public const DOUBLE = 66;
+        public const STRING = 67;
+        public const PARAMETER_NAME = 68;
+        public const ID = 69;
+        public const WS = 70;
 
         public const RULE_stmt = 0;
         public const RULE_selectLocation = 1;
@@ -119,21 +133,26 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
             null, null, null, null, null, null, null, null, null, null, null,
             null, null, null, null, null, null, null, null, null, null, null,
             null, null, null, null, null, null, null, null, null, null, null,
-            null, null, null, "'='", "'!='", "'>'", "'>='", "'<'", "'<='",
+            null, null, null, null, null, null, null, null, null, null, null,
+            null, null, null, null, null, "'='", "'!='", "'>'", "'>='", "'<'",
+            "'<='",
         ];
 
         /**
          * @var array<string>
          */
         private const SYMBOLIC_NAMES = [
-            null, null, null, null, null, null, 'K_ALL', 'K_AND', 'K_ASC', 'K_BETWEEN',
-            'K_BOOST', 'K_BY', 'K_CONTAINS', 'K_CONTENT', 'K_CREATED', 'K_DESC',
-            'K_EMPTY', 'K_FALSE', 'K_FULLTEXT', 'K_FUZZINESS', 'K_FIELD', 'K_FILTER',
-            'K_GROUP', 'K_HIDDEN', 'K_IN', 'K_INFO', 'K_IS', 'K_LIKE', 'K_LIMIT',
-            'K_LOCATION', 'K_MAIN', 'K_MATCH', 'K_MODIFIER', 'K_MODIFIED', 'K_NONE',
-            'K_NOT', 'K_OFFSET', 'K_OR', 'K_ORDER', 'K_OWNER', 'K_PRIORITY', 'K_RELATION',
-            'K_QUERY', 'K_SELECT', 'K_TRUE', 'K_VISIBLE', 'EQ', 'NEQ', 'GT', 'GTE',
-            'LT', 'LTE', 'INT', 'DOUBLE', 'STRING', 'PARAMETER_NAME', 'ID', 'WS',
+            null, null, null, null, null, null, 'K_ALL', 'K_ANCESTOR', 'K_AND',
+            'K_ASC', 'K_BETWEEN', 'K_BOOST', 'K_BY', 'K_CONTAINS', 'K_CONTENT',
+            'K_CODE', 'K_CREATED', 'K_DESC', 'K_DEPTH', 'K_EMPTY', 'K_FALSE',
+            'K_FULLTEXT', 'K_FUZZINESS', 'K_FIELD', 'K_FILTER', 'K_GROUP', 'K_HIDDEN',
+            'K_ID', 'K_IDENTIFIER', 'K_IN', 'K_INFO', 'K_IS', 'K_LANGUAGE', 'K_LIKE',
+            'K_LIMIT', 'K_LOCATION', 'K_MAIN', 'K_MATCH', 'K_MODIFIER', 'K_MODIFIED',
+            'K_NONE', 'K_NOT', 'K_OBJECT', 'K_OFFSET', 'K_OR', 'K_ORDER', 'K_OWNER',
+            'K_PARENT', 'K_PRIORITY', 'K_REMOTE', 'K_RELATION', 'K_STATE', 'K_QUERY',
+            'K_SECTION', 'K_SUBTREE', 'K_SELECT', 'K_TRUE', 'K_TYPE', 'K_VISIBLE',
+            'EQ', 'NEQ', 'GT', 'GTE', 'LT', 'LTE', 'INT', 'DOUBLE', 'STRING',
+            'PARAMETER_NAME', 'ID', 'WS',
         ];
 
         /**
@@ -141,7 +160,7 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
          */
         private const SERIALIZED_ATN =
             "\u{3}\u{608B}\u{A72A}\u{8133}\u{B9ED}\u{417C}\u{3BE7}\u{7786}\u{5964}" .
-            "\u{3}\u{3B}\u{E8}\u{4}\u{2}\u{9}\u{2}\u{4}\u{3}\u{9}\u{3}\u{4}\u{4}" .
+            "\u{3}\u{48}\u{12C}\u{4}\u{2}\u{9}\u{2}\u{4}\u{3}\u{9}\u{3}\u{4}\u{4}" .
             "\u{9}\u{4}\u{4}\u{5}\u{9}\u{5}\u{4}\u{6}\u{9}\u{6}\u{4}\u{7}\u{9}" .
             "\u{7}\u{4}\u{8}\u{9}\u{8}\u{4}\u{9}\u{9}\u{9}\u{4}\u{A}\u{9}\u{A}" .
             "\u{4}\u{B}\u{9}\u{B}\u{4}\u{C}\u{9}\u{C}\u{4}\u{D}\u{9}\u{D}\u{4}" .
@@ -163,148 +182,200 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
             "\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}" .
             "\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}" .
             "\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}" .
-            "\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{5}" .
-            "\u{A}\u{92}\u{A}\u{A}\u{3}\u{A}\u{5}\u{A}\u{95}\u{A}\u{A}\u{3}\u{A}" .
             "\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}" .
-            "\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{5}\u{A}\u{A3}\u{A}" .
+            "\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{5}\u{A}\u{97}\u{A}" .
+            "\u{A}\u{3}\u{A}\u{5}\u{A}\u{9A}\u{A}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}" .
             "\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}" .
-            "\u{7}\u{A}\u{AB}\u{A}\u{A}\u{C}\u{A}\u{E}\u{A}\u{AE}\u{B}\u{A}\u{3}" .
-            "\u{B}\u{3}\u{B}\u{3}\u{B}\u{3}\u{B}\u{5}\u{B}\u{B4}\u{A}\u{B}\u{3}" .
-            "\u{C}\u{3}\u{C}\u{3}\u{C}\u{3}\u{D}\u{3}\u{D}\u{3}\u{D}\u{3}\u{D}" .
-            "\u{7}\u{D}\u{BD}\u{A}\u{D}\u{C}\u{D}\u{E}\u{D}\u{C0}\u{B}\u{D}\u{3}" .
-            "\u{E}\u{3}\u{E}\u{3}\u{E}\u{3}\u{E}\u{3}\u{F}\u{3}\u{F}\u{3}\u{F}" .
-            "\u{5}\u{F}\u{C9}\u{A}\u{F}\u{3}\u{10}\u{3}\u{10}\u{3}\u{10}\u{3}\u{10}" .
-            "\u{3}\u{11}\u{3}\u{11}\u{3}\u{11}\u{3}\u{11}\u{7}\u{11}\u{D3}\u{A}" .
-            "\u{11}\u{C}\u{11}\u{E}\u{11}\u{D6}\u{B}\u{11}\u{3}\u{11}\u{3}\u{11}" .
-            "\u{3}\u{12}\u{3}\u{12}\u{5}\u{12}\u{DC}\u{A}\u{12}\u{3}\u{13}\u{3}" .
-            "\u{13}\u{3}\u{14}\u{3}\u{14}\u{3}\u{14}\u{3}\u{14}\u{5}\u{14}\u{E4}" .
-            "\u{A}\u{14}\u{3}\u{15}\u{3}\u{15}\u{3}\u{15}\u{2}\u{3}\u{12}\u{16}" .
-            "\u{2}\u{4}\u{6}\u{8}\u{A}\u{C}\u{E}\u{10}\u{12}\u{14}\u{16}\u{18}" .
-            "\u{1A}\u{1C}\u{1E}\u{20}\u{22}\u{24}\u{26}\u{28}\u{2}\u{7}\u{4}\u{2}" .
-            "\u{A}\u{A}\u{11}\u{11}\u{4}\u{2}\u{19}\u{19}\u{2F}\u{2F}\u{8}\u{2}" .
-            "\u{B}\u{B}\u{E}\u{E}\u{1A}\u{1A}\u{1D}\u{1D}\u{30}\u{30}\u{32}\u{35}" .
-            "\u{4}\u{2}\u{13}\u{13}\u{2E}\u{2E}\u{5}\u{2}\u{18}\u{18}\u{22}\u{22}" .
-            "\u{29}\u{29}\u{2}\u{F8}\u{2}\u{2D}\u{3}\u{2}\u{2}\u{2}\u{4}\u{2F}" .
-            "\u{3}\u{2}\u{2}\u{2}\u{6}\u{33}\u{3}\u{2}\u{2}\u{2}\u{8}\u{37}\u{3}" .
-            "\u{2}\u{2}\u{2}\u{A}\u{3F}\u{3}\u{2}\u{2}\u{2}\u{C}\u{52}\u{3}\u{2}" .
-            "\u{2}\u{2}\u{E}\u{5A}\u{3}\u{2}\u{2}\u{2}\u{10}\u{5D}\u{3}\u{2}\u{2}" .
-            "\u{2}\u{12}\u{A2}\u{3}\u{2}\u{2}\u{2}\u{14}\u{B3}\u{3}\u{2}\u{2}\u{2}" .
-            "\u{16}\u{B5}\u{3}\u{2}\u{2}\u{2}\u{18}\u{B8}\u{3}\u{2}\u{2}\u{2}\u{1A}" .
-            "\u{C1}\u{3}\u{2}\u{2}\u{2}\u{1C}\u{C8}\u{3}\u{2}\u{2}\u{2}\u{1E}\u{CA}" .
-            "\u{3}\u{2}\u{2}\u{2}\u{20}\u{CE}\u{3}\u{2}\u{2}\u{2}\u{22}\u{DB}\u{3}" .
-            "\u{2}\u{2}\u{2}\u{24}\u{DD}\u{3}\u{2}\u{2}\u{2}\u{26}\u{E3}\u{3}\u{2}" .
-            "\u{2}\u{2}\u{28}\u{E5}\u{3}\u{2}\u{2}\u{2}\u{2A}\u{2E}\u{5}\u{4}\u{3}" .
-            "\u{2}\u{2B}\u{2E}\u{5}\u{6}\u{4}\u{2}\u{2C}\u{2E}\u{5}\u{8}\u{5}\u{2}" .
-            "\u{2D}\u{2A}\u{3}\u{2}\u{2}\u{2}\u{2D}\u{2B}\u{3}\u{2}\u{2}\u{2}\u{2D}" .
-            "\u{2C}\u{3}\u{2}\u{2}\u{2}\u{2E}\u{3}\u{3}\u{2}\u{2}\u{2}\u{2F}\u{30}" .
-            "\u{7}\u{2D}\u{2}\u{2}\u{30}\u{31}\u{7}\u{1F}\u{2}\u{2}\u{31}\u{32}" .
-            "\u{5}\u{A}\u{6}\u{2}\u{32}\u{5}\u{3}\u{2}\u{2}\u{2}\u{33}\u{34}\u{7}" .
-            "\u{2D}\u{2}\u{2}\u{34}\u{35}\u{7}\u{F}\u{2}\u{2}\u{35}\u{36}\u{5}" .
-            "\u{A}\u{6}\u{2}\u{36}\u{7}\u{3}\u{2}\u{2}\u{2}\u{37}\u{38}\u{7}\u{2D}" .
-            "\u{2}\u{2}\u{38}\u{39}\u{7}\u{F}\u{2}\u{2}\u{39}\u{3A}\u{7}\u{1B}" .
-            "\u{2}\u{2}\u{3A}\u{3B}\u{5}\u{A}\u{6}\u{2}\u{3B}\u{9}\u{3}\u{2}\u{2}" .
-            "\u{2}\u{3C}\u{3D}\u{7}\u{17}\u{2}\u{2}\u{3D}\u{3E}\u{7}\u{D}\u{2}" .
-            "\u{2}\u{3E}\u{40}\u{5}\u{12}\u{A}\u{2}\u{3F}\u{3C}\u{3}\u{2}\u{2}" .
-            "\u{2}\u{3F}\u{40}\u{3}\u{2}\u{2}\u{2}\u{40}\u{43}\u{3}\u{2}\u{2}\u{2}" .
-            "\u{41}\u{42}\u{7}\u{2C}\u{2}\u{2}\u{42}\u{44}\u{5}\u{12}\u{A}\u{2}" .
-            "\u{43}\u{41}\u{3}\u{2}\u{2}\u{2}\u{43}\u{44}\u{3}\u{2}\u{2}\u{2}\u{44}" .
-            "\u{48}\u{3}\u{2}\u{2}\u{2}\u{45}\u{46}\u{7}\u{28}\u{2}\u{2}\u{46}" .
-            "\u{47}\u{7}\u{D}\u{2}\u{2}\u{47}\u{49}\u{5}\u{C}\u{7}\u{2}\u{48}\u{45}" .
-            "\u{3}\u{2}\u{2}\u{2}\u{48}\u{49}\u{3}\u{2}\u{2}\u{2}\u{49}\u{4C}\u{3}" .
-            "\u{2}\u{2}\u{2}\u{4A}\u{4B}\u{7}\u{1E}\u{2}\u{2}\u{4B}\u{4D}\u{5}" .
-            "\u{22}\u{12}\u{2}\u{4C}\u{4A}\u{3}\u{2}\u{2}\u{2}\u{4C}\u{4D}\u{3}" .
-            "\u{2}\u{2}\u{2}\u{4D}\u{50}\u{3}\u{2}\u{2}\u{2}\u{4E}\u{4F}\u{7}\u{26}" .
-            "\u{2}\u{2}\u{4F}\u{51}\u{5}\u{22}\u{12}\u{2}\u{50}\u{4E}\u{3}\u{2}" .
-            "\u{2}\u{2}\u{50}\u{51}\u{3}\u{2}\u{2}\u{2}\u{51}\u{B}\u{3}\u{2}\u{2}" .
-            "\u{2}\u{52}\u{57}\u{5}\u{E}\u{8}\u{2}\u{53}\u{54}\u{7}\u{3}\u{2}\u{2}" .
-            "\u{54}\u{56}\u{5}\u{E}\u{8}\u{2}\u{55}\u{53}\u{3}\u{2}\u{2}\u{2}\u{56}" .
-            "\u{59}\u{3}\u{2}\u{2}\u{2}\u{57}\u{55}\u{3}\u{2}\u{2}\u{2}\u{57}\u{58}" .
-            "\u{3}\u{2}\u{2}\u{2}\u{58}\u{D}\u{3}\u{2}\u{2}\u{2}\u{59}\u{57}\u{3}" .
-            "\u{2}\u{2}\u{2}\u{5A}\u{5B}\u{7}\u{3A}\u{2}\u{2}\u{5B}\u{5C}\u{5}" .
-            "\u{10}\u{9}\u{2}\u{5C}\u{F}\u{3}\u{2}\u{2}\u{2}\u{5D}\u{5E}\u{9}\u{2}" .
-            "\u{2}\u{2}\u{5E}\u{11}\u{3}\u{2}\u{2}\u{2}\u{5F}\u{60}\u{8}\u{A}\u{1}" .
-            "\u{2}\u{60}\u{61}\u{7}\u{21}\u{2}\u{2}\u{61}\u{A3}\u{7}\u{8}\u{2}" .
-            "\u{2}\u{62}\u{63}\u{7}\u{21}\u{2}\u{2}\u{63}\u{A3}\u{7}\u{24}\u{2}" .
-            "\u{2}\u{64}\u{65}\u{7}\u{1C}\u{2}\u{2}\u{65}\u{66}\u{7}\u{20}\u{2}" .
-            "\u{2}\u{66}\u{A3}\u{7}\u{1F}\u{2}\u{2}\u{67}\u{68}\u{7}\u{1C}\u{2}" .
-            "\u{2}\u{68}\u{69}\u{7}\u{25}\u{2}\u{2}\u{69}\u{6A}\u{7}\u{20}\u{2}" .
-            "\u{2}\u{6A}\u{A3}\u{7}\u{1F}\u{2}\u{2}\u{6B}\u{6C}\u{7}\u{1C}\u{2}" .
-            "\u{2}\u{6C}\u{A3}\u{9}\u{3}\u{2}\u{2}\u{6D}\u{6E}\u{7}\u{16}\u{2}" .
-            "\u{2}\u{6E}\u{6F}\u{7}\u{3A}\u{2}\u{2}\u{6F}\u{70}\u{7}\u{1C}\u{2}" .
-            "\u{2}\u{70}\u{A3}\u{7}\u{12}\u{2}\u{2}\u{71}\u{72}\u{7}\u{16}\u{2}" .
-            "\u{2}\u{72}\u{73}\u{7}\u{3A}\u{2}\u{2}\u{73}\u{74}\u{7}\u{1C}\u{2}" .
-            "\u{2}\u{74}\u{75}\u{7}\u{25}\u{2}\u{2}\u{75}\u{A3}\u{7}\u{12}\u{2}" .
-            "\u{2}\u{76}\u{77}\u{7}\u{16}\u{2}\u{2}\u{77}\u{78}\u{7}\u{3A}\u{2}" .
-            "\u{2}\u{78}\u{79}\u{5}\u{14}\u{B}\u{2}\u{79}\u{7A}\u{5}\u{1C}\u{F}" .
-            "\u{2}\u{7A}\u{A3}\u{3}\u{2}\u{2}\u{2}\u{7B}\u{7C}\u{7}\u{16}\u{2}" .
-            "\u{2}\u{7C}\u{7D}\u{7}\u{2B}\u{2}\u{2}\u{7D}\u{7E}\u{7}\u{3A}\u{2}" .
-            "\u{2}\u{7E}\u{7F}\u{5}\u{14}\u{B}\u{2}\u{7F}\u{80}\u{5}\u{1C}\u{F}" .
-            "\u{2}\u{80}\u{A3}\u{3}\u{2}\u{2}\u{2}\u{81}\u{82}\u{7}\u{1F}\u{2}" .
-            "\u{2}\u{82}\u{83}\u{7}\u{2A}\u{2}\u{2}\u{83}\u{84}\u{5}\u{14}\u{B}" .
-            "\u{2}\u{84}\u{85}\u{5}\u{1C}\u{F}\u{2}\u{85}\u{A3}\u{3}\u{2}\u{2}" .
-            "\u{2}\u{86}\u{87}\u{7}\u{10}\u{2}\u{2}\u{87}\u{88}\u{5}\u{14}\u{B}" .
-            "\u{2}\u{88}\u{89}\u{5}\u{1C}\u{F}\u{2}\u{89}\u{A3}\u{3}\u{2}\u{2}" .
-            "\u{2}\u{8A}\u{8B}\u{7}\u{23}\u{2}\u{2}\u{8B}\u{8C}\u{5}\u{14}\u{B}" .
-            "\u{2}\u{8C}\u{8D}\u{5}\u{1C}\u{F}\u{2}\u{8D}\u{A3}\u{3}\u{2}\u{2}" .
-            "\u{2}\u{8E}\u{8F}\u{7}\u{14}\u{2}\u{2}\u{8F}\u{91}\u{5}\u{1C}\u{F}" .
-            "\u{2}\u{90}\u{92}\u{5}\u{16}\u{C}\u{2}\u{91}\u{90}\u{3}\u{2}\u{2}" .
-            "\u{2}\u{91}\u{92}\u{3}\u{2}\u{2}\u{2}\u{92}\u{94}\u{3}\u{2}\u{2}\u{2}" .
-            "\u{93}\u{95}\u{5}\u{18}\u{D}\u{2}\u{94}\u{93}\u{3}\u{2}\u{2}\u{2}" .
-            "\u{94}\u{95}\u{3}\u{2}\u{2}\u{2}\u{95}\u{A3}\u{3}\u{2}\u{2}\u{2}\u{96}" .
-            "\u{97}\u{5}\u{28}\u{15}\u{2}\u{97}\u{98}\u{5}\u{14}\u{B}\u{2}\u{98}" .
-            "\u{99}\u{5}\u{1C}\u{F}\u{2}\u{99}\u{A3}\u{3}\u{2}\u{2}\u{2}\u{9A}" .
-            "\u{9B}\u{7}\u{3A}\u{2}\u{2}\u{9B}\u{9C}\u{5}\u{14}\u{B}\u{2}\u{9C}" .
-            "\u{9D}\u{5}\u{1C}\u{F}\u{2}\u{9D}\u{A3}\u{3}\u{2}\u{2}\u{2}\u{9E}" .
-            "\u{9F}\u{7}\u{4}\u{2}\u{2}\u{9F}\u{A0}\u{5}\u{12}\u{A}\u{2}\u{A0}" .
-            "\u{A1}\u{7}\u{5}\u{2}\u{2}\u{A1}\u{A3}\u{3}\u{2}\u{2}\u{2}\u{A2}\u{5F}" .
-            "\u{3}\u{2}\u{2}\u{2}\u{A2}\u{62}\u{3}\u{2}\u{2}\u{2}\u{A2}\u{64}\u{3}" .
-            "\u{2}\u{2}\u{2}\u{A2}\u{67}\u{3}\u{2}\u{2}\u{2}\u{A2}\u{6B}\u{3}\u{2}" .
-            "\u{2}\u{2}\u{A2}\u{6D}\u{3}\u{2}\u{2}\u{2}\u{A2}\u{71}\u{3}\u{2}\u{2}" .
-            "\u{2}\u{A2}\u{76}\u{3}\u{2}\u{2}\u{2}\u{A2}\u{7B}\u{3}\u{2}\u{2}\u{2}" .
-            "\u{A2}\u{81}\u{3}\u{2}\u{2}\u{2}\u{A2}\u{86}\u{3}\u{2}\u{2}\u{2}\u{A2}" .
-            "\u{8A}\u{3}\u{2}\u{2}\u{2}\u{A2}\u{8E}\u{3}\u{2}\u{2}\u{2}\u{A2}\u{96}" .
-            "\u{3}\u{2}\u{2}\u{2}\u{A2}\u{9A}\u{3}\u{2}\u{2}\u{2}\u{A2}\u{9E}\u{3}" .
-            "\u{2}\u{2}\u{2}\u{A3}\u{AC}\u{3}\u{2}\u{2}\u{2}\u{A4}\u{A5}\u{C}\u{5}" .
-            "\u{2}\u{2}\u{A5}\u{A6}\u{7}\u{9}\u{2}\u{2}\u{A6}\u{AB}\u{5}\u{12}" .
-            "\u{A}\u{6}\u{A7}\u{A8}\u{C}\u{4}\u{2}\u{2}\u{A8}\u{A9}\u{7}\u{27}" .
-            "\u{2}\u{2}\u{A9}\u{AB}\u{5}\u{12}\u{A}\u{5}\u{AA}\u{A4}\u{3}\u{2}" .
-            "\u{2}\u{2}\u{AA}\u{A7}\u{3}\u{2}\u{2}\u{2}\u{AB}\u{AE}\u{3}\u{2}\u{2}" .
-            "\u{2}\u{AC}\u{AA}\u{3}\u{2}\u{2}\u{2}\u{AC}\u{AD}\u{3}\u{2}\u{2}\u{2}" .
-            "\u{AD}\u{13}\u{3}\u{2}\u{2}\u{2}\u{AE}\u{AC}\u{3}\u{2}\u{2}\u{2}\u{AF}" .
-            "\u{B4}\u{9}\u{4}\u{2}\u{2}\u{B0}\u{B1}\u{7}\u{25}\u{2}\u{2}\u{B1}" .
-            "\u{B4}\u{7}\u{1A}\u{2}\u{2}\u{B2}\u{B4}\u{7}\u{31}\u{2}\u{2}\u{B3}" .
-            "\u{AF}\u{3}\u{2}\u{2}\u{2}\u{B3}\u{B0}\u{3}\u{2}\u{2}\u{2}\u{B3}\u{B2}" .
-            "\u{3}\u{2}\u{2}\u{2}\u{B4}\u{15}\u{3}\u{2}\u{2}\u{2}\u{B5}\u{B6}\u{7}" .
-            "\u{15}\u{2}\u{2}\u{B6}\u{B7}\u{5}\u{1C}\u{F}\u{2}\u{B7}\u{17}\u{3}" .
-            "\u{2}\u{2}\u{2}\u{B8}\u{B9}\u{7}\u{C}\u{2}\u{2}\u{B9}\u{BE}\u{5}\u{1A}" .
-            "\u{E}\u{2}\u{BA}\u{BB}\u{7}\u{3}\u{2}\u{2}\u{BB}\u{BD}\u{5}\u{1A}" .
-            "\u{E}\u{2}\u{BC}\u{BA}\u{3}\u{2}\u{2}\u{2}\u{BD}\u{C0}\u{3}\u{2}\u{2}" .
-            "\u{2}\u{BE}\u{BC}\u{3}\u{2}\u{2}\u{2}\u{BE}\u{BF}\u{3}\u{2}\u{2}\u{2}" .
-            "\u{BF}\u{19}\u{3}\u{2}\u{2}\u{2}\u{C0}\u{BE}\u{3}\u{2}\u{2}\u{2}\u{C1}" .
-            "\u{C2}\u{7}\u{3A}\u{2}\u{2}\u{C2}\u{C3}\u{7}\u{6}\u{2}\u{2}\u{C3}" .
-            "\u{C4}\u{5}\u{1C}\u{F}\u{2}\u{C4}\u{1B}\u{3}\u{2}\u{2}\u{2}\u{C5}" .
-            "\u{C9}\u{5}\u{22}\u{12}\u{2}\u{C6}\u{C9}\u{5}\u{20}\u{11}\u{2}\u{C7}" .
-            "\u{C9}\u{5}\u{1E}\u{10}\u{2}\u{C8}\u{C5}\u{3}\u{2}\u{2}\u{2}\u{C8}" .
-            "\u{C6}\u{3}\u{2}\u{2}\u{2}\u{C8}\u{C7}\u{3}\u{2}\u{2}\u{2}\u{C9}\u{1D}" .
-            "\u{3}\u{2}\u{2}\u{2}\u{CA}\u{CB}\u{5}\u{22}\u{12}\u{2}\u{CB}\u{CC}" .
-            "\u{7}\u{7}\u{2}\u{2}\u{CC}\u{CD}\u{5}\u{22}\u{12}\u{2}\u{CD}\u{1F}" .
-            "\u{3}\u{2}\u{2}\u{2}\u{CE}\u{CF}\u{7}\u{4}\u{2}\u{2}\u{CF}\u{D4}\u{5}" .
-            "\u{22}\u{12}\u{2}\u{D0}\u{D1}\u{7}\u{3}\u{2}\u{2}\u{D1}\u{D3}\u{5}" .
-            "\u{22}\u{12}\u{2}\u{D2}\u{D0}\u{3}\u{2}\u{2}\u{2}\u{D3}\u{D6}\u{3}" .
-            "\u{2}\u{2}\u{2}\u{D4}\u{D2}\u{3}\u{2}\u{2}\u{2}\u{D4}\u{D5}\u{3}\u{2}" .
-            "\u{2}\u{2}\u{D5}\u{D7}\u{3}\u{2}\u{2}\u{2}\u{D6}\u{D4}\u{3}\u{2}\u{2}" .
-            "\u{2}\u{D7}\u{D8}\u{7}\u{5}\u{2}\u{2}\u{D8}\u{21}\u{3}\u{2}\u{2}\u{2}" .
-            "\u{D9}\u{DC}\u{5}\u{24}\u{13}\u{2}\u{DA}\u{DC}\u{5}\u{26}\u{14}\u{2}" .
-            "\u{DB}\u{D9}\u{3}\u{2}\u{2}\u{2}\u{DB}\u{DA}\u{3}\u{2}\u{2}\u{2}\u{DC}" .
-            "\u{23}\u{3}\u{2}\u{2}\u{2}\u{DD}\u{DE}\u{7}\u{39}\u{2}\u{2}\u{DE}" .
-            "\u{25}\u{3}\u{2}\u{2}\u{2}\u{DF}\u{E4}\u{7}\u{36}\u{2}\u{2}\u{E0}" .
-            "\u{E4}\u{9}\u{5}\u{2}\u{2}\u{E1}\u{E4}\u{7}\u{38}\u{2}\u{2}\u{E2}" .
-            "\u{E4}\u{7}\u{37}\u{2}\u{2}\u{E3}\u{DF}\u{3}\u{2}\u{2}\u{2}\u{E3}" .
-            "\u{E0}\u{3}\u{2}\u{2}\u{2}\u{E3}\u{E1}\u{3}\u{2}\u{2}\u{2}\u{E3}\u{E2}" .
-            "\u{3}\u{2}\u{2}\u{2}\u{E4}\u{27}\u{3}\u{2}\u{2}\u{2}\u{E5}\u{E6}\u{9}" .
-            "\u{6}\u{2}\u{2}\u{E6}\u{29}\u{3}\u{2}\u{2}\u{2}\u{14}\u{2D}\u{3F}" .
-            "\u{43}\u{48}\u{4C}\u{50}\u{57}\u{91}\u{94}\u{A2}\u{AA}\u{AC}\u{B3}" .
-            "\u{BE}\u{C8}\u{D4}\u{DB}\u{E3}";
+            "\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}" .
+            "\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}" .
+            "\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}" .
+            "\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}" .
+            "\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}" .
+            "\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}" .
+            "\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}" .
+            "\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}" .
+            "\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}" .
+            "\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}" .
+            "\u{3}\u{A}\u{5}\u{A}\u{E7}\u{A}\u{A}\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}" .
+            "\u{3}\u{A}\u{3}\u{A}\u{3}\u{A}\u{7}\u{A}\u{EF}\u{A}\u{A}\u{C}\u{A}" .
+            "\u{E}\u{A}\u{F2}\u{B}\u{A}\u{3}\u{B}\u{3}\u{B}\u{3}\u{B}\u{3}\u{B}" .
+            "\u{5}\u{B}\u{F8}\u{A}\u{B}\u{3}\u{C}\u{3}\u{C}\u{3}\u{C}\u{3}\u{D}" .
+            "\u{3}\u{D}\u{3}\u{D}\u{3}\u{D}\u{7}\u{D}\u{101}\u{A}\u{D}\u{C}\u{D}" .
+            "\u{E}\u{D}\u{104}\u{B}\u{D}\u{3}\u{E}\u{3}\u{E}\u{3}\u{E}\u{3}\u{E}" .
+            "\u{3}\u{F}\u{3}\u{F}\u{3}\u{F}\u{5}\u{F}\u{10D}\u{A}\u{F}\u{3}\u{10}" .
+            "\u{3}\u{10}\u{3}\u{10}\u{3}\u{10}\u{3}\u{11}\u{3}\u{11}\u{3}\u{11}" .
+            "\u{3}\u{11}\u{7}\u{11}\u{117}\u{A}\u{11}\u{C}\u{11}\u{E}\u{11}\u{11A}" .
+            "\u{B}\u{11}\u{3}\u{11}\u{3}\u{11}\u{3}\u{12}\u{3}\u{12}\u{5}\u{12}" .
+            "\u{120}\u{A}\u{12}\u{3}\u{13}\u{3}\u{13}\u{3}\u{14}\u{3}\u{14}\u{3}" .
+            "\u{14}\u{3}\u{14}\u{5}\u{14}\u{128}\u{A}\u{14}\u{3}\u{15}\u{3}\u{15}" .
+            "\u{3}\u{15}\u{2}\u{3}\u{12}\u{16}\u{2}\u{4}\u{6}\u{8}\u{A}\u{C}\u{E}" .
+            "\u{10}\u{12}\u{14}\u{16}\u{18}\u{1A}\u{1C}\u{1E}\u{20}\u{22}\u{24}" .
+            "\u{26}\u{28}\u{2}\u{7}\u{4}\u{2}\u{B}\u{B}\u{13}\u{13}\u{4}\u{2}\u{1C}" .
+            "\u{1C}\u{3C}\u{3C}\u{8}\u{2}\u{C}\u{C}\u{F}\u{F}\u{1F}\u{1F}\u{23}" .
+            "\u{23}\u{3D}\u{3D}\u{3F}\u{42}\u{4}\u{2}\u{16}\u{16}\u{3A}\u{3A}\u{5}" .
+            "\u{2}\u{1B}\u{1B}\u{28}\u{28}\u{30}\u{30}\u{2}\u{149}\u{2}\u{2D}\u{3}" .
+            "\u{2}\u{2}\u{2}\u{4}\u{2F}\u{3}\u{2}\u{2}\u{2}\u{6}\u{33}\u{3}\u{2}" .
+            "\u{2}\u{2}\u{8}\u{37}\u{3}\u{2}\u{2}\u{2}\u{A}\u{3F}\u{3}\u{2}\u{2}" .
+            "\u{2}\u{C}\u{52}\u{3}\u{2}\u{2}\u{2}\u{E}\u{5A}\u{3}\u{2}\u{2}\u{2}" .
+            "\u{10}\u{5D}\u{3}\u{2}\u{2}\u{2}\u{12}\u{E6}\u{3}\u{2}\u{2}\u{2}\u{14}" .
+            "\u{F7}\u{3}\u{2}\u{2}\u{2}\u{16}\u{F9}\u{3}\u{2}\u{2}\u{2}\u{18}\u{FC}" .
+            "\u{3}\u{2}\u{2}\u{2}\u{1A}\u{105}\u{3}\u{2}\u{2}\u{2}\u{1C}\u{10C}" .
+            "\u{3}\u{2}\u{2}\u{2}\u{1E}\u{10E}\u{3}\u{2}\u{2}\u{2}\u{20}\u{112}" .
+            "\u{3}\u{2}\u{2}\u{2}\u{22}\u{11F}\u{3}\u{2}\u{2}\u{2}\u{24}\u{121}" .
+            "\u{3}\u{2}\u{2}\u{2}\u{26}\u{127}\u{3}\u{2}\u{2}\u{2}\u{28}\u{129}" .
+            "\u{3}\u{2}\u{2}\u{2}\u{2A}\u{2E}\u{5}\u{4}\u{3}\u{2}\u{2B}\u{2E}\u{5}" .
+            "\u{6}\u{4}\u{2}\u{2C}\u{2E}\u{5}\u{8}\u{5}\u{2}\u{2D}\u{2A}\u{3}\u{2}" .
+            "\u{2}\u{2}\u{2D}\u{2B}\u{3}\u{2}\u{2}\u{2}\u{2D}\u{2C}\u{3}\u{2}\u{2}" .
+            "\u{2}\u{2E}\u{3}\u{3}\u{2}\u{2}\u{2}\u{2F}\u{30}\u{7}\u{39}\u{2}\u{2}" .
+            "\u{30}\u{31}\u{7}\u{25}\u{2}\u{2}\u{31}\u{32}\u{5}\u{A}\u{6}\u{2}" .
+            "\u{32}\u{5}\u{3}\u{2}\u{2}\u{2}\u{33}\u{34}\u{7}\u{39}\u{2}\u{2}\u{34}" .
+            "\u{35}\u{7}\u{10}\u{2}\u{2}\u{35}\u{36}\u{5}\u{A}\u{6}\u{2}\u{36}" .
+            "\u{7}\u{3}\u{2}\u{2}\u{2}\u{37}\u{38}\u{7}\u{39}\u{2}\u{2}\u{38}\u{39}" .
+            "\u{7}\u{10}\u{2}\u{2}\u{39}\u{3A}\u{7}\u{20}\u{2}\u{2}\u{3A}\u{3B}" .
+            "\u{5}\u{A}\u{6}\u{2}\u{3B}\u{9}\u{3}\u{2}\u{2}\u{2}\u{3C}\u{3D}\u{7}" .
+            "\u{1A}\u{2}\u{2}\u{3D}\u{3E}\u{7}\u{E}\u{2}\u{2}\u{3E}\u{40}\u{5}" .
+            "\u{12}\u{A}\u{2}\u{3F}\u{3C}\u{3}\u{2}\u{2}\u{2}\u{3F}\u{40}\u{3}" .
+            "\u{2}\u{2}\u{2}\u{40}\u{43}\u{3}\u{2}\u{2}\u{2}\u{41}\u{42}\u{7}\u{36}" .
+            "\u{2}\u{2}\u{42}\u{44}\u{5}\u{12}\u{A}\u{2}\u{43}\u{41}\u{3}\u{2}" .
+            "\u{2}\u{2}\u{43}\u{44}\u{3}\u{2}\u{2}\u{2}\u{44}\u{48}\u{3}\u{2}\u{2}" .
+            "\u{2}\u{45}\u{46}\u{7}\u{2F}\u{2}\u{2}\u{46}\u{47}\u{7}\u{E}\u{2}" .
+            "\u{2}\u{47}\u{49}\u{5}\u{C}\u{7}\u{2}\u{48}\u{45}\u{3}\u{2}\u{2}\u{2}" .
+            "\u{48}\u{49}\u{3}\u{2}\u{2}\u{2}\u{49}\u{4C}\u{3}\u{2}\u{2}\u{2}\u{4A}" .
+            "\u{4B}\u{7}\u{24}\u{2}\u{2}\u{4B}\u{4D}\u{5}\u{22}\u{12}\u{2}\u{4C}" .
+            "\u{4A}\u{3}\u{2}\u{2}\u{2}\u{4C}\u{4D}\u{3}\u{2}\u{2}\u{2}\u{4D}\u{50}" .
+            "\u{3}\u{2}\u{2}\u{2}\u{4E}\u{4F}\u{7}\u{2D}\u{2}\u{2}\u{4F}\u{51}" .
+            "\u{5}\u{22}\u{12}\u{2}\u{50}\u{4E}\u{3}\u{2}\u{2}\u{2}\u{50}\u{51}" .
+            "\u{3}\u{2}\u{2}\u{2}\u{51}\u{B}\u{3}\u{2}\u{2}\u{2}\u{52}\u{57}\u{5}" .
+            "\u{E}\u{8}\u{2}\u{53}\u{54}\u{7}\u{3}\u{2}\u{2}\u{54}\u{56}\u{5}\u{E}" .
+            "\u{8}\u{2}\u{55}\u{53}\u{3}\u{2}\u{2}\u{2}\u{56}\u{59}\u{3}\u{2}\u{2}" .
+            "\u{2}\u{57}\u{55}\u{3}\u{2}\u{2}\u{2}\u{57}\u{58}\u{3}\u{2}\u{2}\u{2}" .
+            "\u{58}\u{D}\u{3}\u{2}\u{2}\u{2}\u{59}\u{57}\u{3}\u{2}\u{2}\u{2}\u{5A}" .
+            "\u{5B}\u{7}\u{47}\u{2}\u{2}\u{5B}\u{5C}\u{5}\u{10}\u{9}\u{2}\u{5C}" .
+            "\u{F}\u{3}\u{2}\u{2}\u{2}\u{5D}\u{5E}\u{9}\u{2}\u{2}\u{2}\u{5E}\u{11}" .
+            "\u{3}\u{2}\u{2}\u{2}\u{5F}\u{60}\u{8}\u{A}\u{1}\u{2}\u{60}\u{61}\u{7}" .
+            "\u{27}\u{2}\u{2}\u{61}\u{E7}\u{7}\u{8}\u{2}\u{2}\u{62}\u{63}\u{7}" .
+            "\u{27}\u{2}\u{2}\u{63}\u{E7}\u{7}\u{2A}\u{2}\u{2}\u{64}\u{65}\u{7}" .
+            "\u{21}\u{2}\u{2}\u{65}\u{66}\u{7}\u{26}\u{2}\u{2}\u{66}\u{E7}\u{7}" .
+            "\u{25}\u{2}\u{2}\u{67}\u{68}\u{7}\u{21}\u{2}\u{2}\u{68}\u{69}\u{7}" .
+            "\u{2B}\u{2}\u{2}\u{69}\u{6A}\u{7}\u{26}\u{2}\u{2}\u{6A}\u{E7}\u{7}" .
+            "\u{25}\u{2}\u{2}\u{6B}\u{6C}\u{7}\u{21}\u{2}\u{2}\u{6C}\u{E7}\u{9}" .
+            "\u{3}\u{2}\u{2}\u{6D}\u{6E}\u{7}\u{19}\u{2}\u{2}\u{6E}\u{6F}\u{7}" .
+            "\u{47}\u{2}\u{2}\u{6F}\u{70}\u{7}\u{21}\u{2}\u{2}\u{70}\u{E7}\u{7}" .
+            "\u{15}\u{2}\u{2}\u{71}\u{72}\u{7}\u{19}\u{2}\u{2}\u{72}\u{73}\u{7}" .
+            "\u{47}\u{2}\u{2}\u{73}\u{74}\u{7}\u{21}\u{2}\u{2}\u{74}\u{75}\u{7}" .
+            "\u{2B}\u{2}\u{2}\u{75}\u{E7}\u{7}\u{15}\u{2}\u{2}\u{76}\u{77}\u{7}" .
+            "\u{19}\u{2}\u{2}\u{77}\u{78}\u{7}\u{47}\u{2}\u{2}\u{78}\u{79}\u{5}" .
+            "\u{14}\u{B}\u{2}\u{79}\u{7A}\u{5}\u{1C}\u{F}\u{2}\u{7A}\u{E7}\u{3}" .
+            "\u{2}\u{2}\u{2}\u{7B}\u{7C}\u{7}\u{19}\u{2}\u{2}\u{7C}\u{7D}\u{7}" .
+            "\u{34}\u{2}\u{2}\u{7D}\u{7E}\u{7}\u{47}\u{2}\u{2}\u{7E}\u{7F}\u{5}" .
+            "\u{14}\u{B}\u{2}\u{7F}\u{80}\u{5}\u{1C}\u{F}\u{2}\u{80}\u{E7}\u{3}" .
+            "\u{2}\u{2}\u{2}\u{81}\u{82}\u{7}\u{25}\u{2}\u{2}\u{82}\u{83}\u{7}" .
+            "\u{32}\u{2}\u{2}\u{83}\u{84}\u{5}\u{14}\u{B}\u{2}\u{84}\u{85}\u{5}" .
+            "\u{1C}\u{F}\u{2}\u{85}\u{E7}\u{3}\u{2}\u{2}\u{2}\u{86}\u{87}\u{7}" .
+            "\u{25}\u{2}\u{2}\u{87}\u{88}\u{7}\u{14}\u{2}\u{2}\u{88}\u{89}\u{5}" .
+            "\u{14}\u{B}\u{2}\u{89}\u{8A}\u{5}\u{1C}\u{F}\u{2}\u{8A}\u{E7}\u{3}" .
+            "\u{2}\u{2}\u{2}\u{8B}\u{8C}\u{7}\u{12}\u{2}\u{2}\u{8C}\u{8D}\u{5}" .
+            "\u{14}\u{B}\u{2}\u{8D}\u{8E}\u{5}\u{1C}\u{F}\u{2}\u{8E}\u{E7}\u{3}" .
+            "\u{2}\u{2}\u{2}\u{8F}\u{90}\u{7}\u{29}\u{2}\u{2}\u{90}\u{91}\u{5}" .
+            "\u{14}\u{B}\u{2}\u{91}\u{92}\u{5}\u{1C}\u{F}\u{2}\u{92}\u{E7}\u{3}" .
+            "\u{2}\u{2}\u{2}\u{93}\u{94}\u{7}\u{17}\u{2}\u{2}\u{94}\u{96}\u{5}" .
+            "\u{1C}\u{F}\u{2}\u{95}\u{97}\u{5}\u{16}\u{C}\u{2}\u{96}\u{95}\u{3}" .
+            "\u{2}\u{2}\u{2}\u{96}\u{97}\u{3}\u{2}\u{2}\u{2}\u{97}\u{99}\u{3}\u{2}" .
+            "\u{2}\u{2}\u{98}\u{9A}\u{5}\u{18}\u{D}\u{2}\u{99}\u{98}\u{3}\u{2}" .
+            "\u{2}\u{2}\u{99}\u{9A}\u{3}\u{2}\u{2}\u{2}\u{9A}\u{E7}\u{3}\u{2}\u{2}" .
+            "\u{2}\u{9B}\u{9C}\u{5}\u{28}\u{15}\u{2}\u{9C}\u{9D}\u{5}\u{14}\u{B}" .
+            "\u{2}\u{9D}\u{9E}\u{5}\u{1C}\u{F}\u{2}\u{9E}\u{E7}\u{3}\u{2}\u{2}" .
+            "\u{2}\u{9F}\u{A0}\u{7}\u{9}\u{2}\u{2}\u{A0}\u{A1}\u{5}\u{14}\u{B}" .
+            "\u{2}\u{A1}\u{A2}\u{5}\u{1C}\u{F}\u{2}\u{A2}\u{E7}\u{3}\u{2}\u{2}" .
+            "\u{2}\u{A3}\u{A4}\u{7}\u{10}\u{2}\u{2}\u{A4}\u{A5}\u{7}\u{1D}\u{2}" .
+            "\u{2}\u{A5}\u{A6}\u{5}\u{14}\u{B}\u{2}\u{A6}\u{A7}\u{5}\u{1C}\u{F}" .
+            "\u{2}\u{A7}\u{E7}\u{3}\u{2}\u{2}\u{2}\u{A8}\u{A9}\u{7}\u{10}\u{2}" .
+            "\u{2}\u{A9}\u{AA}\u{7}\u{3B}\u{2}\u{2}\u{AA}\u{AB}\u{7}\u{1D}\u{2}" .
+            "\u{2}\u{AB}\u{AC}\u{5}\u{14}\u{B}\u{2}\u{AC}\u{AD}\u{5}\u{1C}\u{F}" .
+            "\u{2}\u{AD}\u{E7}\u{3}\u{2}\u{2}\u{2}\u{AE}\u{AF}\u{7}\u{10}\u{2}" .
+            "\u{2}\u{AF}\u{B0}\u{7}\u{3B}\u{2}\u{2}\u{B0}\u{B1}\u{7}\u{1E}\u{2}" .
+            "\u{2}\u{B1}\u{B2}\u{5}\u{14}\u{B}\u{2}\u{B2}\u{B3}\u{5}\u{1C}\u{F}" .
+            "\u{2}\u{B3}\u{E7}\u{3}\u{2}\u{2}\u{2}\u{B4}\u{B5}\u{7}\u{22}\u{2}" .
+            "\u{2}\u{B5}\u{B6}\u{7}\u{11}\u{2}\u{2}\u{B6}\u{B7}\u{5}\u{14}\u{B}" .
+            "\u{2}\u{B7}\u{B8}\u{5}\u{1C}\u{F}\u{2}\u{B8}\u{E7}\u{3}\u{2}\u{2}" .
+            "\u{2}\u{B9}\u{BA}\u{7}\u{25}\u{2}\u{2}\u{BA}\u{BB}\u{7}\u{1D}\u{2}" .
+            "\u{2}\u{BB}\u{BC}\u{5}\u{14}\u{B}\u{2}\u{BC}\u{BD}\u{5}\u{1C}\u{F}" .
+            "\u{2}\u{BD}\u{E7}\u{3}\u{2}\u{2}\u{2}\u{BE}\u{BF}\u{7}\u{25}\u{2}" .
+            "\u{2}\u{BF}\u{C0}\u{7}\u{33}\u{2}\u{2}\u{C0}\u{C1}\u{7}\u{1D}\u{2}" .
+            "\u{2}\u{C1}\u{C2}\u{5}\u{14}\u{B}\u{2}\u{C2}\u{C3}\u{5}\u{1C}\u{F}" .
+            "\u{2}\u{C3}\u{E7}\u{3}\u{2}\u{2}\u{2}\u{C4}\u{C5}\u{7}\u{2C}\u{2}" .
+            "\u{2}\u{C5}\u{C6}\u{7}\u{35}\u{2}\u{2}\u{C6}\u{C7}\u{7}\u{1D}\u{2}" .
+            "\u{2}\u{C7}\u{C8}\u{5}\u{14}\u{B}\u{2}\u{C8}\u{C9}\u{5}\u{1C}\u{F}" .
+            "\u{2}\u{C9}\u{E7}\u{3}\u{2}\u{2}\u{2}\u{CA}\u{CB}\u{7}\u{31}\u{2}" .
+            "\u{2}\u{CB}\u{CC}\u{7}\u{25}\u{2}\u{2}\u{CC}\u{CD}\u{7}\u{1D}\u{2}" .
+            "\u{2}\u{CD}\u{CE}\u{5}\u{14}\u{B}\u{2}\u{CE}\u{CF}\u{5}\u{1C}\u{F}" .
+            "\u{2}\u{CF}\u{E7}\u{3}\u{2}\u{2}\u{2}\u{D0}\u{D1}\u{7}\u{33}\u{2}" .
+            "\u{2}\u{D1}\u{D2}\u{7}\u{1D}\u{2}\u{2}\u{D2}\u{D3}\u{5}\u{14}\u{B}" .
+            "\u{2}\u{D3}\u{D4}\u{5}\u{1C}\u{F}\u{2}\u{D4}\u{E7}\u{3}\u{2}\u{2}" .
+            "\u{2}\u{D5}\u{D6}\u{7}\u{37}\u{2}\u{2}\u{D6}\u{D7}\u{7}\u{1D}\u{2}" .
+            "\u{2}\u{D7}\u{D8}\u{5}\u{14}\u{B}\u{2}\u{D8}\u{D9}\u{5}\u{1C}\u{F}" .
+            "\u{2}\u{D9}\u{E7}\u{3}\u{2}\u{2}\u{2}\u{DA}\u{DB}\u{7}\u{38}\u{2}" .
+            "\u{2}\u{DB}\u{DC}\u{5}\u{14}\u{B}\u{2}\u{DC}\u{DD}\u{5}\u{1C}\u{F}" .
+            "\u{2}\u{DD}\u{E7}\u{3}\u{2}\u{2}\u{2}\u{DE}\u{DF}\u{7}\u{47}\u{2}" .
+            "\u{2}\u{DF}\u{E0}\u{5}\u{14}\u{B}\u{2}\u{E0}\u{E1}\u{5}\u{1C}\u{F}" .
+            "\u{2}\u{E1}\u{E7}\u{3}\u{2}\u{2}\u{2}\u{E2}\u{E3}\u{7}\u{4}\u{2}\u{2}" .
+            "\u{E3}\u{E4}\u{5}\u{12}\u{A}\u{2}\u{E4}\u{E5}\u{7}\u{5}\u{2}\u{2}" .
+            "\u{E5}\u{E7}\u{3}\u{2}\u{2}\u{2}\u{E6}\u{5F}\u{3}\u{2}\u{2}\u{2}\u{E6}" .
+            "\u{62}\u{3}\u{2}\u{2}\u{2}\u{E6}\u{64}\u{3}\u{2}\u{2}\u{2}\u{E6}\u{67}" .
+            "\u{3}\u{2}\u{2}\u{2}\u{E6}\u{6B}\u{3}\u{2}\u{2}\u{2}\u{E6}\u{6D}\u{3}" .
+            "\u{2}\u{2}\u{2}\u{E6}\u{71}\u{3}\u{2}\u{2}\u{2}\u{E6}\u{76}\u{3}\u{2}" .
+            "\u{2}\u{2}\u{E6}\u{7B}\u{3}\u{2}\u{2}\u{2}\u{E6}\u{81}\u{3}\u{2}\u{2}" .
+            "\u{2}\u{E6}\u{86}\u{3}\u{2}\u{2}\u{2}\u{E6}\u{8B}\u{3}\u{2}\u{2}\u{2}" .
+            "\u{E6}\u{8F}\u{3}\u{2}\u{2}\u{2}\u{E6}\u{93}\u{3}\u{2}\u{2}\u{2}\u{E6}" .
+            "\u{9B}\u{3}\u{2}\u{2}\u{2}\u{E6}\u{9F}\u{3}\u{2}\u{2}\u{2}\u{E6}\u{A3}" .
+            "\u{3}\u{2}\u{2}\u{2}\u{E6}\u{A8}\u{3}\u{2}\u{2}\u{2}\u{E6}\u{AE}\u{3}" .
+            "\u{2}\u{2}\u{2}\u{E6}\u{B4}\u{3}\u{2}\u{2}\u{2}\u{E6}\u{B9}\u{3}\u{2}" .
+            "\u{2}\u{2}\u{E6}\u{BE}\u{3}\u{2}\u{2}\u{2}\u{E6}\u{C4}\u{3}\u{2}\u{2}" .
+            "\u{2}\u{E6}\u{CA}\u{3}\u{2}\u{2}\u{2}\u{E6}\u{D0}\u{3}\u{2}\u{2}\u{2}" .
+            "\u{E6}\u{D5}\u{3}\u{2}\u{2}\u{2}\u{E6}\u{DA}\u{3}\u{2}\u{2}\u{2}\u{E6}" .
+            "\u{DE}\u{3}\u{2}\u{2}\u{2}\u{E6}\u{E2}\u{3}\u{2}\u{2}\u{2}\u{E7}\u{F0}" .
+            "\u{3}\u{2}\u{2}\u{2}\u{E8}\u{E9}\u{C}\u{5}\u{2}\u{2}\u{E9}\u{EA}\u{7}" .
+            "\u{A}\u{2}\u{2}\u{EA}\u{EF}\u{5}\u{12}\u{A}\u{6}\u{EB}\u{EC}\u{C}" .
+            "\u{4}\u{2}\u{2}\u{EC}\u{ED}\u{7}\u{2E}\u{2}\u{2}\u{ED}\u{EF}\u{5}" .
+            "\u{12}\u{A}\u{5}\u{EE}\u{E8}\u{3}\u{2}\u{2}\u{2}\u{EE}\u{EB}\u{3}" .
+            "\u{2}\u{2}\u{2}\u{EF}\u{F2}\u{3}\u{2}\u{2}\u{2}\u{F0}\u{EE}\u{3}\u{2}" .
+            "\u{2}\u{2}\u{F0}\u{F1}\u{3}\u{2}\u{2}\u{2}\u{F1}\u{13}\u{3}\u{2}\u{2}" .
+            "\u{2}\u{F2}\u{F0}\u{3}\u{2}\u{2}\u{2}\u{F3}\u{F8}\u{9}\u{4}\u{2}\u{2}" .
+            "\u{F4}\u{F5}\u{7}\u{2B}\u{2}\u{2}\u{F5}\u{F8}\u{7}\u{1F}\u{2}\u{2}" .
+            "\u{F6}\u{F8}\u{7}\u{3E}\u{2}\u{2}\u{F7}\u{F3}\u{3}\u{2}\u{2}\u{2}" .
+            "\u{F7}\u{F4}\u{3}\u{2}\u{2}\u{2}\u{F7}\u{F6}\u{3}\u{2}\u{2}\u{2}\u{F8}" .
+            "\u{15}\u{3}\u{2}\u{2}\u{2}\u{F9}\u{FA}\u{7}\u{18}\u{2}\u{2}\u{FA}" .
+            "\u{FB}\u{5}\u{1C}\u{F}\u{2}\u{FB}\u{17}\u{3}\u{2}\u{2}\u{2}\u{FC}" .
+            "\u{FD}\u{7}\u{D}\u{2}\u{2}\u{FD}\u{102}\u{5}\u{1A}\u{E}\u{2}\u{FE}" .
+            "\u{FF}\u{7}\u{3}\u{2}\u{2}\u{FF}\u{101}\u{5}\u{1A}\u{E}\u{2}\u{100}" .
+            "\u{FE}\u{3}\u{2}\u{2}\u{2}\u{101}\u{104}\u{3}\u{2}\u{2}\u{2}\u{102}" .
+            "\u{100}\u{3}\u{2}\u{2}\u{2}\u{102}\u{103}\u{3}\u{2}\u{2}\u{2}\u{103}" .
+            "\u{19}\u{3}\u{2}\u{2}\u{2}\u{104}\u{102}\u{3}\u{2}\u{2}\u{2}\u{105}" .
+            "\u{106}\u{7}\u{47}\u{2}\u{2}\u{106}\u{107}\u{7}\u{6}\u{2}\u{2}\u{107}" .
+            "\u{108}\u{5}\u{1C}\u{F}\u{2}\u{108}\u{1B}\u{3}\u{2}\u{2}\u{2}\u{109}" .
+            "\u{10D}\u{5}\u{22}\u{12}\u{2}\u{10A}\u{10D}\u{5}\u{20}\u{11}\u{2}" .
+            "\u{10B}\u{10D}\u{5}\u{1E}\u{10}\u{2}\u{10C}\u{109}\u{3}\u{2}\u{2}" .
+            "\u{2}\u{10C}\u{10A}\u{3}\u{2}\u{2}\u{2}\u{10C}\u{10B}\u{3}\u{2}\u{2}" .
+            "\u{2}\u{10D}\u{1D}\u{3}\u{2}\u{2}\u{2}\u{10E}\u{10F}\u{5}\u{22}\u{12}" .
+            "\u{2}\u{10F}\u{110}\u{7}\u{7}\u{2}\u{2}\u{110}\u{111}\u{5}\u{22}\u{12}" .
+            "\u{2}\u{111}\u{1F}\u{3}\u{2}\u{2}\u{2}\u{112}\u{113}\u{7}\u{4}\u{2}" .
+            "\u{2}\u{113}\u{118}\u{5}\u{22}\u{12}\u{2}\u{114}\u{115}\u{7}\u{3}" .
+            "\u{2}\u{2}\u{115}\u{117}\u{5}\u{22}\u{12}\u{2}\u{116}\u{114}\u{3}" .
+            "\u{2}\u{2}\u{2}\u{117}\u{11A}\u{3}\u{2}\u{2}\u{2}\u{118}\u{116}\u{3}" .
+            "\u{2}\u{2}\u{2}\u{118}\u{119}\u{3}\u{2}\u{2}\u{2}\u{119}\u{11B}\u{3}" .
+            "\u{2}\u{2}\u{2}\u{11A}\u{118}\u{3}\u{2}\u{2}\u{2}\u{11B}\u{11C}\u{7}" .
+            "\u{5}\u{2}\u{2}\u{11C}\u{21}\u{3}\u{2}\u{2}\u{2}\u{11D}\u{120}\u{5}" .
+            "\u{24}\u{13}\u{2}\u{11E}\u{120}\u{5}\u{26}\u{14}\u{2}\u{11F}\u{11D}" .
+            "\u{3}\u{2}\u{2}\u{2}\u{11F}\u{11E}\u{3}\u{2}\u{2}\u{2}\u{120}\u{23}" .
+            "\u{3}\u{2}\u{2}\u{2}\u{121}\u{122}\u{7}\u{46}\u{2}\u{2}\u{122}\u{25}" .
+            "\u{3}\u{2}\u{2}\u{2}\u{123}\u{128}\u{7}\u{43}\u{2}\u{2}\u{124}\u{128}" .
+            "\u{9}\u{5}\u{2}\u{2}\u{125}\u{128}\u{7}\u{45}\u{2}\u{2}\u{126}\u{128}" .
+            "\u{7}\u{44}\u{2}\u{2}\u{127}\u{123}\u{3}\u{2}\u{2}\u{2}\u{127}\u{124}" .
+            "\u{3}\u{2}\u{2}\u{2}\u{127}\u{125}\u{3}\u{2}\u{2}\u{2}\u{127}\u{126}" .
+            "\u{3}\u{2}\u{2}\u{2}\u{128}\u{27}\u{3}\u{2}\u{2}\u{2}\u{129}\u{12A}" .
+            "\u{9}\u{6}\u{2}\u{2}\u{12A}\u{29}\u{3}\u{2}\u{2}\u{2}\u{14}\u{2D}" .
+            "\u{3F}\u{43}\u{48}\u{4C}\u{50}\u{57}\u{96}\u{99}\u{E6}\u{EE}\u{F0}" .
+            "\u{F7}\u{102}\u{10C}\u{118}\u{11F}\u{127}";
 
         protected static $atn;
         protected static $decisionToDFA;
@@ -691,7 +762,7 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
 
             try {
                 $this->enterOuterAlt($localContext, 1);
-                $this->setState(160);
+                $this->setState(228);
                 $this->errorHandler->sync($this);
 
                 switch ($this->getInterpreter()->adaptivePredict($this->input, 9, $this->ctx)) {
@@ -840,95 +911,283 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
                     break;
 
                     case 11:
-                        $localContext = new Context\CreatedExprContext($localContext);
+                        $localContext = new Context\LocationDepthExprContext($localContext);
                         $this->ctx = $localContext;
                         $previousContext = $localContext;
                         $this->setState(132);
-                        $this->match(self::K_CREATED);
+                        $this->match(self::K_LOCATION);
                         $this->setState(133);
-                        $localContext->op = $this->operator();
+                        $this->match(self::K_DEPTH);
                         $this->setState(134);
+                        $localContext->op = $this->operator();
+                        $this->setState(135);
                         $localContext->val = $this->value();
                     break;
 
                     case 12:
-                        $localContext = new Context\ModifiedExprContext($localContext);
+                        $localContext = new Context\CreatedExprContext($localContext);
                         $this->ctx = $localContext;
                         $previousContext = $localContext;
-                        $this->setState(136);
-                        $this->match(self::K_MODIFIED);
                         $this->setState(137);
-                        $localContext->op = $this->operator();
+                        $this->match(self::K_CREATED);
                         $this->setState(138);
+                        $localContext->op = $this->operator();
+                        $this->setState(139);
                         $localContext->val = $this->value();
                     break;
 
                     case 13:
+                        $localContext = new Context\ModifiedExprContext($localContext);
+                        $this->ctx = $localContext;
+                        $previousContext = $localContext;
+                        $this->setState(141);
+                        $this->match(self::K_MODIFIED);
+                        $this->setState(142);
+                        $localContext->op = $this->operator();
+                        $this->setState(143);
+                        $localContext->val = $this->value();
+                    break;
+
+                    case 14:
                         $localContext = new Context\FulltextExprContext($localContext);
                         $this->ctx = $localContext;
                         $previousContext = $localContext;
-                        $this->setState(140);
+                        $this->setState(145);
                         $this->match(self::K_FULLTEXT);
-                        $this->setState(141);
+                        $this->setState(146);
                         $localContext->val = $this->value();
-                        $this->setState(143);
+                        $this->setState(148);
                         $this->errorHandler->sync($this);
 
                         switch ($this->getInterpreter()->adaptivePredict($this->input, 7, $this->ctx)) {
                             case 1:
-                                $this->setState(142);
+                                $this->setState(147);
                                 $this->fuzziness();
                             break;
                         }
-                        $this->setState(146);
+                        $this->setState(151);
                         $this->errorHandler->sync($this);
 
                         switch ($this->getInterpreter()->adaptivePredict($this->input, 8, $this->ctx)) {
                             case 1:
-                                $this->setState(145);
+                                $this->setState(150);
                                 $this->boosting();
                             break;
                         }
                     break;
 
-                    case 14:
+                    case 15:
                         $localContext = new Context\UserMetadataExprContext($localContext);
                         $this->ctx = $localContext;
                         $previousContext = $localContext;
-                        $this->setState(148);
-                        $localContext->target = $this->userMetadataTarget();
-                        $this->setState(149);
-                        $localContext->op = $this->operator();
-                        $this->setState(150);
-                        $localContext->val = $this->value();
-                    break;
-
-                    case 15:
-                        $localContext = new Context\CriterionExprContext($localContext);
-                        $this->ctx = $localContext;
-                        $previousContext = $localContext;
-                        $this->setState(152);
-                        $localContext->clazz = $this->match(self::ID);
                         $this->setState(153);
-                        $localContext->op = $this->operator();
+                        $localContext->target = $this->userMetadataTarget();
                         $this->setState(154);
+                        $localContext->op = $this->operator();
+                        $this->setState(155);
                         $localContext->val = $this->value();
                     break;
 
                     case 16:
+                        $localContext = new Context\AncestorExprContext($localContext);
+                        $this->ctx = $localContext;
+                        $previousContext = $localContext;
+                        $this->setState(157);
+                        $this->match(self::K_ANCESTOR);
+                        $this->setState(158);
+                        $localContext->op = $this->operator();
+                        $this->setState(159);
+                        $localContext->val = $this->value();
+                    break;
+
+                    case 17:
+                        $localContext = new Context\ContentIdExprContext($localContext);
+                        $this->ctx = $localContext;
+                        $previousContext = $localContext;
+                        $this->setState(161);
+                        $this->match(self::K_CONTENT);
+                        $this->setState(162);
+                        $this->match(self::K_ID);
+                        $this->setState(163);
+                        $localContext->op = $this->operator();
+                        $this->setState(164);
+                        $localContext->val = $this->value();
+                    break;
+
+                    case 18:
+                        $localContext = new Context\ContentTypeIdExprContext($localContext);
+                        $this->ctx = $localContext;
+                        $previousContext = $localContext;
+                        $this->setState(166);
+                        $this->match(self::K_CONTENT);
+                        $this->setState(167);
+                        $this->match(self::K_TYPE);
+                        $this->setState(168);
+                        $this->match(self::K_ID);
+                        $this->setState(169);
+                        $localContext->op = $this->operator();
+                        $this->setState(170);
+                        $localContext->val = $this->value();
+                    break;
+
+                    case 19:
+                        $localContext = new Context\ContentTypeIdentifierExprContext($localContext);
+                        $this->ctx = $localContext;
+                        $previousContext = $localContext;
+                        $this->setState(172);
+                        $this->match(self::K_CONTENT);
+                        $this->setState(173);
+                        $this->match(self::K_TYPE);
+                        $this->setState(174);
+                        $this->match(self::K_IDENTIFIER);
+                        $this->setState(175);
+                        $localContext->op = $this->operator();
+                        $this->setState(176);
+                        $localContext->val = $this->value();
+                    break;
+
+                    case 20:
+                        $localContext = new Context\LanguageCodeExprContext($localContext);
+                        $this->ctx = $localContext;
+                        $previousContext = $localContext;
+                        $this->setState(178);
+                        $this->match(self::K_LANGUAGE);
+                        $this->setState(179);
+                        $this->match(self::K_CODE);
+                        $this->setState(180);
+                        $localContext->op = $this->operator();
+                        $this->setState(181);
+                        $localContext->val = $this->value();
+                    break;
+
+                    case 21:
+                        $localContext = new Context\LocationIdExprContext($localContext);
+                        $this->ctx = $localContext;
+                        $previousContext = $localContext;
+                        $this->setState(183);
+                        $this->match(self::K_LOCATION);
+                        $this->setState(184);
+                        $this->match(self::K_ID);
+                        $this->setState(185);
+                        $localContext->op = $this->operator();
+                        $this->setState(186);
+                        $localContext->val = $this->value();
+                    break;
+
+                    case 22:
+                        $localContext = new Context\LocationRemoteIdExprContext($localContext);
+                        $this->ctx = $localContext;
+                        $previousContext = $localContext;
+                        $this->setState(188);
+                        $this->match(self::K_LOCATION);
+                        $this->setState(189);
+                        $this->match(self::K_REMOTE);
+                        $this->setState(190);
+                        $this->match(self::K_ID);
+                        $this->setState(191);
+                        $localContext->op = $this->operator();
+                        $this->setState(192);
+                        $localContext->val = $this->value();
+                    break;
+
+                    case 23:
+                        $localContext = new Context\ObjectStateIdExprContext($localContext);
+                        $this->ctx = $localContext;
+                        $previousContext = $localContext;
+                        $this->setState(194);
+                        $this->match(self::K_OBJECT);
+                        $this->setState(195);
+                        $this->match(self::K_STATE);
+                        $this->setState(196);
+                        $this->match(self::K_ID);
+                        $this->setState(197);
+                        $localContext->op = $this->operator();
+                        $this->setState(198);
+                        $localContext->val = $this->value();
+                    break;
+
+                    case 24:
+                        $localContext = new Context\ParentLocationIdExprContext($localContext);
+                        $this->ctx = $localContext;
+                        $previousContext = $localContext;
+                        $this->setState(200);
+                        $this->match(self::K_PARENT);
+                        $this->setState(201);
+                        $this->match(self::K_LOCATION);
+                        $this->setState(202);
+                        $this->match(self::K_ID);
+                        $this->setState(203);
+                        $localContext->op = $this->operator();
+                        $this->setState(204);
+                        $localContext->val = $this->value();
+                    break;
+
+                    case 25:
+                        $localContext = new Context\RemoteIdExprContext($localContext);
+                        $this->ctx = $localContext;
+                        $previousContext = $localContext;
+                        $this->setState(206);
+                        $this->match(self::K_REMOTE);
+                        $this->setState(207);
+                        $this->match(self::K_ID);
+                        $this->setState(208);
+                        $localContext->op = $this->operator();
+                        $this->setState(209);
+                        $localContext->val = $this->value();
+                    break;
+
+                    case 26:
+                        $localContext = new Context\SectionIdExprContext($localContext);
+                        $this->ctx = $localContext;
+                        $previousContext = $localContext;
+                        $this->setState(211);
+                        $this->match(self::K_SECTION);
+                        $this->setState(212);
+                        $this->match(self::K_ID);
+                        $this->setState(213);
+                        $localContext->op = $this->operator();
+                        $this->setState(214);
+                        $localContext->val = $this->value();
+                    break;
+
+                    case 27:
+                        $localContext = new Context\SubtreeExprContext($localContext);
+                        $this->ctx = $localContext;
+                        $previousContext = $localContext;
+                        $this->setState(216);
+                        $this->match(self::K_SUBTREE);
+                        $this->setState(217);
+                        $localContext->op = $this->operator();
+                        $this->setState(218);
+                        $localContext->val = $this->value();
+                    break;
+
+                    case 28:
+                        $localContext = new Context\CriterionExprContext($localContext);
+                        $this->ctx = $localContext;
+                        $previousContext = $localContext;
+                        $this->setState(220);
+                        $localContext->clazz = $this->match(self::ID);
+                        $this->setState(221);
+                        $localContext->op = $this->operator();
+                        $this->setState(222);
+                        $localContext->val = $this->value();
+                    break;
+
+                    case 29:
                         $localContext = new Context\InnerExprContext($localContext);
                         $this->ctx = $localContext;
                         $previousContext = $localContext;
-                        $this->setState(156);
+                        $this->setState(224);
                         $this->match(self::T__1);
-                        $this->setState(157);
+                        $this->setState(225);
                         $this->recursiveExpr(0);
-                        $this->setState(158);
+                        $this->setState(226);
                         $this->match(self::T__2);
                     break;
                 }
                 $this->ctx->stop = $this->input->LT(-1);
-                $this->setState(170);
+                $this->setState(238);
                 $this->errorHandler->sync($this);
 
                 $alt = $this->getInterpreter()->adaptivePredict($this->input, 11, $this->ctx);
@@ -940,7 +1199,7 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
                         }
 
                         $previousContext = $localContext;
-                        $this->setState(168);
+                        $this->setState(236);
                         $this->errorHandler->sync($this);
 
                         switch ($this->getInterpreter()->adaptivePredict($this->input, 10, $this->ctx)) {
@@ -949,14 +1208,14 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
                                 $localContext->left = $previousContext;
 
                                 $this->pushNewRecursionContext($localContext, $startState, self::RULE_expr);
-                                $this->setState(162);
+                                $this->setState(230);
 
                                 if (!($this->precpred($this->ctx, 3))) {
                                     throw new FailedPredicateException($this, '\\$this->precpred(\\$this->ctx, 3)');
                                 }
-                                $this->setState(163);
+                                $this->setState(231);
                                 $this->match(self::K_AND);
-                                $this->setState(164);
+                                $this->setState(232);
                                 $localContext->right = $this->recursiveExpr(4);
                             break;
 
@@ -965,20 +1224,20 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
                                 $localContext->left = $previousContext;
 
                                 $this->pushNewRecursionContext($localContext, $startState, self::RULE_expr);
-                                $this->setState(165);
+                                $this->setState(233);
 
                                 if (!($this->precpred($this->ctx, 2))) {
                                     throw new FailedPredicateException($this, '\\$this->precpred(\\$this->ctx, 2)');
                                 }
-                                $this->setState(166);
+                                $this->setState(234);
                                 $this->match(self::K_OR);
-                                $this->setState(167);
+                                $this->setState(235);
                                 $localContext->right = $this->recursiveExpr(3);
                             break;
                         }
                     }
 
-                    $this->setState(172);
+                    $this->setState(240);
                     $this->errorHandler->sync($this);
 
                     $alt = $this->getInterpreter()->adaptivePredict($this->input, 11, $this->ctx);
@@ -1004,7 +1263,7 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
             $this->enterRule($localContext, 18, self::RULE_operator);
 
             try {
-                $this->setState(177);
+                $this->setState(245);
                 $this->errorHandler->sync($this);
 
                 switch ($this->input->LA(1)) {
@@ -1019,12 +1278,12 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
                     case self::LTE:
                         $localContext = new Context\BuildInOperatorContext($localContext);
                         $this->enterOuterAlt($localContext, 1);
-                        $this->setState(173);
+                        $this->setState(241);
 
                         $localContext->op = $this->input->LT(1);
                         $_la = $this->input->LA(1);
 
-                        if (!(((($_la) & ~0x3f) === 0 && ((1 << $_la) & ((1 << self::K_BETWEEN) | (1 << self::K_CONTAINS) | (1 << self::K_IN) | (1 << self::K_LIKE) | (1 << self::EQ) | (1 << self::GT) | (1 << self::GTE) | (1 << self::LT) | (1 << self::LTE))) !== 0))) {
+                        if (!((((($_la - 10)) & ~0x3f) === 0 && ((1 << ($_la - 10)) & ((1 << (self::K_BETWEEN - 10)) | (1 << (self::K_CONTAINS - 10)) | (1 << (self::K_IN - 10)) | (1 << (self::K_LIKE - 10)) | (1 << (self::EQ - 10)) | (1 << (self::GT - 10)) | (1 << (self::GTE - 10)) | (1 << (self::LT - 10)) | (1 << (self::LTE - 10)))) !== 0))) {
                             $localContext->op = $this->errorHandler->recoverInline($this);
                         } else {
                             if ($this->input->LA(1) === Token::EOF) {
@@ -1039,16 +1298,16 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
                     case self::K_NOT:
                         $localContext = new Context\NotInOperatorContext($localContext);
                         $this->enterOuterAlt($localContext, 2);
-                        $this->setState(174);
+                        $this->setState(242);
                         $this->match(self::K_NOT);
-                        $this->setState(175);
+                        $this->setState(243);
                         $this->match(self::K_IN);
                         break;
 
                     case self::NEQ:
                         $localContext = new Context\NotEQContext($localContext);
                         $this->enterOuterAlt($localContext, 3);
-                        $this->setState(176);
+                        $this->setState(244);
                         $this->match(self::NEQ);
                         break;
 
@@ -1077,9 +1336,9 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
 
             try {
                 $this->enterOuterAlt($localContext, 1);
-                $this->setState(179);
+                $this->setState(247);
                 $this->match(self::K_FUZZINESS);
-                $this->setState(180);
+                $this->setState(248);
                 $localContext->val = $this->value();
             } catch (RecognitionException $exception) {
                 $localContext->exception = $exception;
@@ -1103,24 +1362,24 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
 
             try {
                 $this->enterOuterAlt($localContext, 1);
-                $this->setState(182);
+                $this->setState(250);
                 $this->match(self::K_BOOST);
-                $this->setState(183);
+                $this->setState(251);
                 $this->fieldBoost();
-                $this->setState(188);
+                $this->setState(256);
                 $this->errorHandler->sync($this);
 
                 $alt = $this->getInterpreter()->adaptivePredict($this->input, 13, $this->ctx);
 
                 while ($alt !== 2 && $alt !== ATN::INVALID_ALT_NUMBER) {
                     if ($alt === 1) {
-                        $this->setState(184);
+                        $this->setState(252);
                         $this->match(self::T__0);
-                        $this->setState(185);
+                        $this->setState(253);
                         $this->fieldBoost();
                     }
 
-                    $this->setState(190);
+                    $this->setState(258);
                     $this->errorHandler->sync($this);
 
                     $alt = $this->getInterpreter()->adaptivePredict($this->input, 13, $this->ctx);
@@ -1147,11 +1406,11 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
 
             try {
                 $this->enterOuterAlt($localContext, 1);
-                $this->setState(191);
+                $this->setState(259);
                 $localContext->field = $this->match(self::ID);
-                $this->setState(192);
+                $this->setState(260);
                 $this->match(self::T__3);
-                $this->setState(193);
+                $this->setState(261);
                 $localContext->val = $this->value();
             } catch (RecognitionException $exception) {
                 $localContext->exception = $exception;
@@ -1174,25 +1433,25 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
             $this->enterRule($localContext, 26, self::RULE_value);
 
             try {
-                $this->setState(198);
+                $this->setState(266);
                 $this->errorHandler->sync($this);
 
                 switch ($this->getInterpreter()->adaptivePredict($this->input, 14, $this->ctx)) {
                     case 1:
                         $this->enterOuterAlt($localContext, 1);
-                        $this->setState(195);
+                        $this->setState(263);
                         $this->argument();
                     break;
 
                     case 2:
                         $this->enterOuterAlt($localContext, 2);
-                        $this->setState(196);
+                        $this->setState(264);
                         $this->argumentList();
                     break;
 
                     case 3:
                         $this->enterOuterAlt($localContext, 3);
-                        $this->setState(197);
+                        $this->setState(265);
                         $this->argumentRange();
                     break;
                 }
@@ -1218,11 +1477,11 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
 
             try {
                 $this->enterOuterAlt($localContext, 1);
-                $this->setState(200);
+                $this->setState(268);
                 $localContext->a = $this->argument();
-                $this->setState(201);
+                $this->setState(269);
                 $this->match(self::T__4);
-                $this->setState(202);
+                $this->setState(270);
                 $localContext->b = $this->argument();
             } catch (RecognitionException $exception) {
                 $localContext->exception = $exception;
@@ -1246,24 +1505,24 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
 
             try {
                 $this->enterOuterAlt($localContext, 1);
-                $this->setState(204);
+                $this->setState(272);
                 $this->match(self::T__1);
-                $this->setState(205);
+                $this->setState(273);
                 $this->argument();
-                $this->setState(210);
+                $this->setState(278);
                 $this->errorHandler->sync($this);
 
                 $_la = $this->input->LA(1);
                 while ($_la === self::T__0) {
-                    $this->setState(206);
+                    $this->setState(274);
                     $this->match(self::T__0);
-                    $this->setState(207);
+                    $this->setState(275);
                     $this->argument();
-                    $this->setState(212);
+                    $this->setState(280);
                     $this->errorHandler->sync($this);
                     $_la = $this->input->LA(1);
                 }
-                $this->setState(213);
+                $this->setState(281);
                 $this->match(self::T__2);
             } catch (RecognitionException $exception) {
                 $localContext->exception = $exception;
@@ -1286,13 +1545,13 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
             $this->enterRule($localContext, 32, self::RULE_argument);
 
             try {
-                $this->setState(217);
+                $this->setState(285);
                 $this->errorHandler->sync($this);
 
                 switch ($this->input->LA(1)) {
                     case self::PARAMETER_NAME:
                         $this->enterOuterAlt($localContext, 1);
-                        $this->setState(215);
+                        $this->setState(283);
                         $this->parameter();
                         break;
 
@@ -1302,7 +1561,7 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
                     case self::DOUBLE:
                     case self::STRING:
                         $this->enterOuterAlt($localContext, 2);
-                        $this->setState(216);
+                        $this->setState(284);
                         $this->scalar();
                         break;
 
@@ -1331,7 +1590,7 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
 
             try {
                 $this->enterOuterAlt($localContext, 1);
-                $this->setState(219);
+                $this->setState(287);
                 $localContext->name = $this->match(self::PARAMETER_NAME);
             } catch (RecognitionException $exception) {
                 $localContext->exception = $exception;
@@ -1354,14 +1613,14 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
             $this->enterRule($localContext, 36, self::RULE_scalar);
 
             try {
-                $this->setState(225);
+                $this->setState(293);
                 $this->errorHandler->sync($this);
 
                 switch ($this->input->LA(1)) {
                     case self::INT:
                         $localContext = new Context\IntContext($localContext);
                         $this->enterOuterAlt($localContext, 1);
-                        $this->setState(221);
+                        $this->setState(289);
                         $localContext->val = $this->match(self::INT);
                         break;
 
@@ -1369,7 +1628,7 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
                     case self::K_TRUE:
                         $localContext = new Context\BooleanContext($localContext);
                         $this->enterOuterAlt($localContext, 2);
-                        $this->setState(222);
+                        $this->setState(290);
 
                         $localContext->val = $this->input->LT(1);
                         $_la = $this->input->LA(1);
@@ -1389,14 +1648,14 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
                     case self::STRING:
                         $localContext = new Context\StringContext($localContext);
                         $this->enterOuterAlt($localContext, 3);
-                        $this->setState(223);
+                        $this->setState(291);
                         $localContext->val = $this->match(self::STRING);
                         break;
 
                     case self::DOUBLE:
                         $localContext = new Context\DoubleContext($localContext);
                         $this->enterOuterAlt($localContext, 4);
-                        $this->setState(224);
+                        $this->setState(292);
                         $localContext->val = $this->match(self::DOUBLE);
                         break;
 
@@ -1425,7 +1684,7 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser {
 
             try {
                 $this->enterOuterAlt($localContext, 1);
-                $this->setState(227);
+                $this->setState(295);
 
                 $localContext->target = $this->input->LT(1);
                 $_la = $this->input->LA(1);
@@ -1892,55 +2151,6 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser\Context 
         }
     }
 
-    class UserMetadataExprContext extends ExprContext
-    {
-        /**
-         * @var UserMetadataTargetContext|null
-         */
-        public $target;
-
-        /**
-         * @var OperatorContext|null
-         */
-        public $op;
-
-        /**
-         * @var ValueContext|null
-         */
-        public $val;
-
-        public function __construct(ExprContext $context)
-        {
-            parent::__construct($context);
-
-            $this->copyFrom($context);
-        }
-
-        public function userMetadataTarget(): ?UserMetadataTargetContext
-        {
-            return $this->getTypedRuleContext(UserMetadataTargetContext::class, 0);
-        }
-
-        public function operator(): ?OperatorContext
-        {
-            return $this->getTypedRuleContext(OperatorContext::class, 0);
-        }
-
-        public function value(): ?ValueContext
-        {
-            return $this->getTypedRuleContext(ValueContext::class, 0);
-        }
-
-        public function accept(ParseTreeVisitor $visitor)
-        {
-            if ($visitor instanceof EZQLVisitor) {
-                return $visitor->visitUserMetadataExpr($this);
-            }
-
-            return $visitor->visitChildren($this);
-        }
-    }
-
     class IsFieldEmptyExprContext extends ExprContext
     {
         /**
@@ -2044,6 +2254,682 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser\Context 
         }
     }
 
+    class LocationRemoteIdExprContext extends ExprContext
+    {
+        /**
+         * @var OperatorContext|null
+         */
+        public $op;
+
+        /**
+         * @var ValueContext|null
+         */
+        public $val;
+
+        public function __construct(ExprContext $context)
+        {
+            parent::__construct($context);
+
+            $this->copyFrom($context);
+        }
+
+        public function K_LOCATION(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_LOCATION, 0);
+        }
+
+        public function K_REMOTE(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_REMOTE, 0);
+        }
+
+        public function K_ID(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_ID, 0);
+        }
+
+        public function operator(): ?OperatorContext
+        {
+            return $this->getTypedRuleContext(OperatorContext::class, 0);
+        }
+
+        public function value(): ?ValueContext
+        {
+            return $this->getTypedRuleContext(ValueContext::class, 0);
+        }
+
+        public function accept(ParseTreeVisitor $visitor)
+        {
+            if ($visitor instanceof EZQLVisitor) {
+                return $visitor->visitLocationRemoteIdExpr($this);
+            }
+
+            return $visitor->visitChildren($this);
+        }
+    }
+
+    class VisibilityExprContext extends ExprContext
+    {
+        /**
+         * @var Token|null
+         */
+        public $flag;
+
+        public function __construct(ExprContext $context)
+        {
+            parent::__construct($context);
+
+            $this->copyFrom($context);
+        }
+
+        public function K_IS(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_IS, 0);
+        }
+
+        public function K_VISIBLE(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_VISIBLE, 0);
+        }
+
+        public function K_HIDDEN(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_HIDDEN, 0);
+        }
+
+        public function accept(ParseTreeVisitor $visitor)
+        {
+            if ($visitor instanceof EZQLVisitor) {
+                return $visitor->visitVisibilityExpr($this);
+            }
+
+            return $visitor->visitChildren($this);
+        }
+    }
+
+    class ContentIdExprContext extends ExprContext
+    {
+        /**
+         * @var OperatorContext|null
+         */
+        public $op;
+
+        /**
+         * @var ValueContext|null
+         */
+        public $val;
+
+        public function __construct(ExprContext $context)
+        {
+            parent::__construct($context);
+
+            $this->copyFrom($context);
+        }
+
+        public function K_CONTENT(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_CONTENT, 0);
+        }
+
+        public function K_ID(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_ID, 0);
+        }
+
+        public function operator(): ?OperatorContext
+        {
+            return $this->getTypedRuleContext(OperatorContext::class, 0);
+        }
+
+        public function value(): ?ValueContext
+        {
+            return $this->getTypedRuleContext(ValueContext::class, 0);
+        }
+
+        public function accept(ParseTreeVisitor $visitor)
+        {
+            if ($visitor instanceof EZQLVisitor) {
+                return $visitor->visitContentIdExpr($this);
+            }
+
+            return $visitor->visitChildren($this);
+        }
+    }
+
+    class RemoteIdExprContext extends ExprContext
+    {
+        /**
+         * @var OperatorContext|null
+         */
+        public $op;
+
+        /**
+         * @var ValueContext|null
+         */
+        public $val;
+
+        public function __construct(ExprContext $context)
+        {
+            parent::__construct($context);
+
+            $this->copyFrom($context);
+        }
+
+        public function K_REMOTE(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_REMOTE, 0);
+        }
+
+        public function K_ID(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_ID, 0);
+        }
+
+        public function operator(): ?OperatorContext
+        {
+            return $this->getTypedRuleContext(OperatorContext::class, 0);
+        }
+
+        public function value(): ?ValueContext
+        {
+            return $this->getTypedRuleContext(ValueContext::class, 0);
+        }
+
+        public function accept(ParseTreeVisitor $visitor)
+        {
+            if ($visitor instanceof EZQLVisitor) {
+                return $visitor->visitRemoteIdExpr($this);
+            }
+
+            return $visitor->visitChildren($this);
+        }
+    }
+
+    class ObjectStateIdExprContext extends ExprContext
+    {
+        /**
+         * @var OperatorContext|null
+         */
+        public $op;
+
+        /**
+         * @var ValueContext|null
+         */
+        public $val;
+
+        public function __construct(ExprContext $context)
+        {
+            parent::__construct($context);
+
+            $this->copyFrom($context);
+        }
+
+        public function K_OBJECT(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_OBJECT, 0);
+        }
+
+        public function K_STATE(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_STATE, 0);
+        }
+
+        public function K_ID(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_ID, 0);
+        }
+
+        public function operator(): ?OperatorContext
+        {
+            return $this->getTypedRuleContext(OperatorContext::class, 0);
+        }
+
+        public function value(): ?ValueContext
+        {
+            return $this->getTypedRuleContext(ValueContext::class, 0);
+        }
+
+        public function accept(ParseTreeVisitor $visitor)
+        {
+            if ($visitor instanceof EZQLVisitor) {
+                return $visitor->visitObjectStateIdExpr($this);
+            }
+
+            return $visitor->visitChildren($this);
+        }
+    }
+
+    class LanguageCodeExprContext extends ExprContext
+    {
+        /**
+         * @var OperatorContext|null
+         */
+        public $op;
+
+        /**
+         * @var ValueContext|null
+         */
+        public $val;
+
+        public function __construct(ExprContext $context)
+        {
+            parent::__construct($context);
+
+            $this->copyFrom($context);
+        }
+
+        public function K_LANGUAGE(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_LANGUAGE, 0);
+        }
+
+        public function K_CODE(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_CODE, 0);
+        }
+
+        public function operator(): ?OperatorContext
+        {
+            return $this->getTypedRuleContext(OperatorContext::class, 0);
+        }
+
+        public function value(): ?ValueContext
+        {
+            return $this->getTypedRuleContext(ValueContext::class, 0);
+        }
+
+        public function accept(ParseTreeVisitor $visitor)
+        {
+            if ($visitor instanceof EZQLVisitor) {
+                return $visitor->visitLanguageCodeExpr($this);
+            }
+
+            return $visitor->visitChildren($this);
+        }
+    }
+
+    class IsMainLocationExprContext extends ExprContext
+    {
+        public function __construct(ExprContext $context)
+        {
+            parent::__construct($context);
+
+            $this->copyFrom($context);
+        }
+
+        public function K_IS(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_IS, 0);
+        }
+
+        public function K_MAIN(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_MAIN, 0);
+        }
+
+        public function K_LOCATION(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_LOCATION, 0);
+        }
+
+        public function accept(ParseTreeVisitor $visitor)
+        {
+            if ($visitor instanceof EZQLVisitor) {
+                return $visitor->visitIsMainLocationExpr($this);
+            }
+
+            return $visitor->visitChildren($this);
+        }
+    }
+
+    class LocationPriorityExprContext extends ExprContext
+    {
+        /**
+         * @var OperatorContext|null
+         */
+        public $op;
+
+        /**
+         * @var ValueContext|null
+         */
+        public $val;
+
+        public function __construct(ExprContext $context)
+        {
+            parent::__construct($context);
+
+            $this->copyFrom($context);
+        }
+
+        public function K_LOCATION(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_LOCATION, 0);
+        }
+
+        public function K_PRIORITY(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_PRIORITY, 0);
+        }
+
+        public function operator(): ?OperatorContext
+        {
+            return $this->getTypedRuleContext(OperatorContext::class, 0);
+        }
+
+        public function value(): ?ValueContext
+        {
+            return $this->getTypedRuleContext(ValueContext::class, 0);
+        }
+
+        public function accept(ParseTreeVisitor $visitor)
+        {
+            if ($visitor instanceof EZQLVisitor) {
+                return $visitor->visitLocationPriorityExpr($this);
+            }
+
+            return $visitor->visitChildren($this);
+        }
+    }
+
+    class ContentTypeIdentifierExprContext extends ExprContext
+    {
+        /**
+         * @var OperatorContext|null
+         */
+        public $op;
+
+        /**
+         * @var ValueContext|null
+         */
+        public $val;
+
+        public function __construct(ExprContext $context)
+        {
+            parent::__construct($context);
+
+            $this->copyFrom($context);
+        }
+
+        public function K_CONTENT(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_CONTENT, 0);
+        }
+
+        public function K_TYPE(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_TYPE, 0);
+        }
+
+        public function K_IDENTIFIER(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_IDENTIFIER, 0);
+        }
+
+        public function operator(): ?OperatorContext
+        {
+            return $this->getTypedRuleContext(OperatorContext::class, 0);
+        }
+
+        public function value(): ?ValueContext
+        {
+            return $this->getTypedRuleContext(ValueContext::class, 0);
+        }
+
+        public function accept(ParseTreeVisitor $visitor)
+        {
+            if ($visitor instanceof EZQLVisitor) {
+                return $visitor->visitContentTypeIdentifierExpr($this);
+            }
+
+            return $visitor->visitChildren($this);
+        }
+    }
+
+    class LocationIdExprContext extends ExprContext
+    {
+        /**
+         * @var OperatorContext|null
+         */
+        public $op;
+
+        /**
+         * @var ValueContext|null
+         */
+        public $val;
+
+        public function __construct(ExprContext $context)
+        {
+            parent::__construct($context);
+
+            $this->copyFrom($context);
+        }
+
+        public function K_LOCATION(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_LOCATION, 0);
+        }
+
+        public function K_ID(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_ID, 0);
+        }
+
+        public function operator(): ?OperatorContext
+        {
+            return $this->getTypedRuleContext(OperatorContext::class, 0);
+        }
+
+        public function value(): ?ValueContext
+        {
+            return $this->getTypedRuleContext(ValueContext::class, 0);
+        }
+
+        public function accept(ParseTreeVisitor $visitor)
+        {
+            if ($visitor instanceof EZQLVisitor) {
+                return $visitor->visitLocationIdExpr($this);
+            }
+
+            return $visitor->visitChildren($this);
+        }
+    }
+
+    class FulltextExprContext extends ExprContext
+    {
+        /**
+         * @var ValueContext|null
+         */
+        public $val;
+
+        public function __construct(ExprContext $context)
+        {
+            parent::__construct($context);
+
+            $this->copyFrom($context);
+        }
+
+        public function K_FULLTEXT(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_FULLTEXT, 0);
+        }
+
+        public function value(): ?ValueContext
+        {
+            return $this->getTypedRuleContext(ValueContext::class, 0);
+        }
+
+        public function fuzziness(): ?FuzzinessContext
+        {
+            return $this->getTypedRuleContext(FuzzinessContext::class, 0);
+        }
+
+        public function boosting(): ?BoostingContext
+        {
+            return $this->getTypedRuleContext(BoostingContext::class, 0);
+        }
+
+        public function accept(ParseTreeVisitor $visitor)
+        {
+            if ($visitor instanceof EZQLVisitor) {
+                return $visitor->visitFulltextExpr($this);
+            }
+
+            return $visitor->visitChildren($this);
+        }
+    }
+
+    class ParentLocationIdExprContext extends ExprContext
+    {
+        /**
+         * @var OperatorContext|null
+         */
+        public $op;
+
+        /**
+         * @var ValueContext|null
+         */
+        public $val;
+
+        public function __construct(ExprContext $context)
+        {
+            parent::__construct($context);
+
+            $this->copyFrom($context);
+        }
+
+        public function K_PARENT(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_PARENT, 0);
+        }
+
+        public function K_LOCATION(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_LOCATION, 0);
+        }
+
+        public function K_ID(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_ID, 0);
+        }
+
+        public function operator(): ?OperatorContext
+        {
+            return $this->getTypedRuleContext(OperatorContext::class, 0);
+        }
+
+        public function value(): ?ValueContext
+        {
+            return $this->getTypedRuleContext(ValueContext::class, 0);
+        }
+
+        public function accept(ParseTreeVisitor $visitor)
+        {
+            if ($visitor instanceof EZQLVisitor) {
+                return $visitor->visitParentLocationIdExpr($this);
+            }
+
+            return $visitor->visitChildren($this);
+        }
+    }
+
+    class CriterionExprContext extends ExprContext
+    {
+        /**
+         * @var Token|null
+         */
+        public $clazz;
+
+        /**
+         * @var OperatorContext|null
+         */
+        public $op;
+
+        /**
+         * @var ValueContext|null
+         */
+        public $val;
+
+        public function __construct(ExprContext $context)
+        {
+            parent::__construct($context);
+
+            $this->copyFrom($context);
+        }
+
+        public function ID(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::ID, 0);
+        }
+
+        public function operator(): ?OperatorContext
+        {
+            return $this->getTypedRuleContext(OperatorContext::class, 0);
+        }
+
+        public function value(): ?ValueContext
+        {
+            return $this->getTypedRuleContext(ValueContext::class, 0);
+        }
+
+        public function accept(ParseTreeVisitor $visitor)
+        {
+            if ($visitor instanceof EZQLVisitor) {
+                return $visitor->visitCriterionExpr($this);
+            }
+
+            return $visitor->visitChildren($this);
+        }
+    }
+
+    class UserMetadataExprContext extends ExprContext
+    {
+        /**
+         * @var UserMetadataTargetContext|null
+         */
+        public $target;
+
+        /**
+         * @var OperatorContext|null
+         */
+        public $op;
+
+        /**
+         * @var ValueContext|null
+         */
+        public $val;
+
+        public function __construct(ExprContext $context)
+        {
+            parent::__construct($context);
+
+            $this->copyFrom($context);
+        }
+
+        public function userMetadataTarget(): ?UserMetadataTargetContext
+        {
+            return $this->getTypedRuleContext(UserMetadataTargetContext::class, 0);
+        }
+
+        public function operator(): ?OperatorContext
+        {
+            return $this->getTypedRuleContext(OperatorContext::class, 0);
+        }
+
+        public function value(): ?ValueContext
+        {
+            return $this->getTypedRuleContext(ValueContext::class, 0);
+        }
+
+        public function accept(ParseTreeVisitor $visitor)
+        {
+            if ($visitor instanceof EZQLVisitor) {
+                return $visitor->visitUserMetadataExpr($this);
+            }
+
+            return $visitor->visitChildren($this);
+        }
+    }
+
     class MatchAllExprContext extends ExprContext
     {
         public function __construct(ExprContext $context)
@@ -2067,6 +2953,55 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser\Context 
         {
             if ($visitor instanceof EZQLVisitor) {
                 return $visitor->visitMatchAllExpr($this);
+            }
+
+            return $visitor->visitChildren($this);
+        }
+    }
+
+    class LocationDepthExprContext extends ExprContext
+    {
+        /**
+         * @var OperatorContext|null
+         */
+        public $op;
+
+        /**
+         * @var ValueContext|null
+         */
+        public $val;
+
+        public function __construct(ExprContext $context)
+        {
+            parent::__construct($context);
+
+            $this->copyFrom($context);
+        }
+
+        public function K_LOCATION(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_LOCATION, 0);
+        }
+
+        public function K_DEPTH(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_DEPTH, 0);
+        }
+
+        public function operator(): ?OperatorContext
+        {
+            return $this->getTypedRuleContext(OperatorContext::class, 0);
+        }
+
+        public function value(): ?ValueContext
+        {
+            return $this->getTypedRuleContext(ValueContext::class, 0);
+        }
+
+        public function accept(ParseTreeVisitor $visitor)
+        {
+            if ($visitor instanceof EZQLVisitor) {
+                return $visitor->visitLocationDepthExpr($this);
             }
 
             return $visitor->visitChildren($this);
@@ -2182,12 +3117,17 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser\Context 
         }
     }
 
-    class VisibilityExprContext extends ExprContext
+    class SubtreeExprContext extends ExprContext
     {
         /**
-         * @var Token|null
+         * @var OperatorContext|null
          */
-        public $flag;
+        public $op;
+
+        /**
+         * @var ValueContext|null
+         */
+        public $val;
 
         public function __construct(ExprContext $context)
         {
@@ -2196,25 +3136,25 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser\Context 
             $this->copyFrom($context);
         }
 
-        public function K_IS(): ?TerminalNode
+        public function K_SUBTREE(): ?TerminalNode
         {
-            return $this->getToken(EZQLParser::K_IS, 0);
+            return $this->getToken(EZQLParser::K_SUBTREE, 0);
         }
 
-        public function K_VISIBLE(): ?TerminalNode
+        public function operator(): ?OperatorContext
         {
-            return $this->getToken(EZQLParser::K_VISIBLE, 0);
+            return $this->getTypedRuleContext(OperatorContext::class, 0);
         }
 
-        public function K_HIDDEN(): ?TerminalNode
+        public function value(): ?ValueContext
         {
-            return $this->getToken(EZQLParser::K_HIDDEN, 0);
+            return $this->getTypedRuleContext(ValueContext::class, 0);
         }
 
         public function accept(ParseTreeVisitor $visitor)
         {
             if ($visitor instanceof EZQLVisitor) {
-                return $visitor->visitVisibilityExpr($this);
+                return $visitor->visitSubtreeExpr($this);
             }
 
             return $visitor->visitChildren($this);
@@ -2319,6 +3259,50 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser\Context 
         }
     }
 
+    class AncestorExprContext extends ExprContext
+    {
+        /**
+         * @var OperatorContext|null
+         */
+        public $op;
+
+        /**
+         * @var ValueContext|null
+         */
+        public $val;
+
+        public function __construct(ExprContext $context)
+        {
+            parent::__construct($context);
+
+            $this->copyFrom($context);
+        }
+
+        public function K_ANCESTOR(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_ANCESTOR, 0);
+        }
+
+        public function operator(): ?OperatorContext
+        {
+            return $this->getTypedRuleContext(OperatorContext::class, 0);
+        }
+
+        public function value(): ?ValueContext
+        {
+            return $this->getTypedRuleContext(ValueContext::class, 0);
+        }
+
+        public function accept(ParseTreeVisitor $visitor)
+        {
+            if ($visitor instanceof EZQLVisitor) {
+                return $visitor->visitAncestorExpr($this);
+            }
+
+            return $visitor->visitChildren($this);
+        }
+    }
+
     class MatchNoneExprContext extends ExprContext
     {
         public function __construct(ExprContext $context)
@@ -2397,6 +3381,55 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser\Context 
         }
     }
 
+    class SectionIdExprContext extends ExprContext
+    {
+        /**
+         * @var OperatorContext|null
+         */
+        public $op;
+
+        /**
+         * @var ValueContext|null
+         */
+        public $val;
+
+        public function __construct(ExprContext $context)
+        {
+            parent::__construct($context);
+
+            $this->copyFrom($context);
+        }
+
+        public function K_SECTION(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_SECTION, 0);
+        }
+
+        public function K_ID(): ?TerminalNode
+        {
+            return $this->getToken(EZQLParser::K_ID, 0);
+        }
+
+        public function operator(): ?OperatorContext
+        {
+            return $this->getTypedRuleContext(OperatorContext::class, 0);
+        }
+
+        public function value(): ?ValueContext
+        {
+            return $this->getTypedRuleContext(ValueContext::class, 0);
+        }
+
+        public function accept(ParseTreeVisitor $visitor)
+        {
+            if ($visitor instanceof EZQLVisitor) {
+                return $visitor->visitSectionIdExpr($this);
+            }
+
+            return $visitor->visitChildren($this);
+        }
+    }
+
     class CreatedExprContext extends ExprContext
     {
         /**
@@ -2441,41 +3474,7 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser\Context 
         }
     }
 
-    class IsMainLocationExprContext extends ExprContext
-    {
-        public function __construct(ExprContext $context)
-        {
-            parent::__construct($context);
-
-            $this->copyFrom($context);
-        }
-
-        public function K_IS(): ?TerminalNode
-        {
-            return $this->getToken(EZQLParser::K_IS, 0);
-        }
-
-        public function K_MAIN(): ?TerminalNode
-        {
-            return $this->getToken(EZQLParser::K_MAIN, 0);
-        }
-
-        public function K_LOCATION(): ?TerminalNode
-        {
-            return $this->getToken(EZQLParser::K_LOCATION, 0);
-        }
-
-        public function accept(ParseTreeVisitor $visitor)
-        {
-            if ($visitor instanceof EZQLVisitor) {
-                return $visitor->visitIsMainLocationExpr($this);
-            }
-
-            return $visitor->visitChildren($this);
-        }
-    }
-
-    class LocationPriorityExprContext extends ExprContext
+    class ContentTypeIdExprContext extends ExprContext
     {
         /**
          * @var OperatorContext|null
@@ -2494,107 +3493,19 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser\Context 
             $this->copyFrom($context);
         }
 
-        public function K_LOCATION(): ?TerminalNode
+        public function K_CONTENT(): ?TerminalNode
         {
-            return $this->getToken(EZQLParser::K_LOCATION, 0);
+            return $this->getToken(EZQLParser::K_CONTENT, 0);
         }
 
-        public function K_PRIORITY(): ?TerminalNode
+        public function K_TYPE(): ?TerminalNode
         {
-            return $this->getToken(EZQLParser::K_PRIORITY, 0);
+            return $this->getToken(EZQLParser::K_TYPE, 0);
         }
 
-        public function operator(): ?OperatorContext
+        public function K_ID(): ?TerminalNode
         {
-            return $this->getTypedRuleContext(OperatorContext::class, 0);
-        }
-
-        public function value(): ?ValueContext
-        {
-            return $this->getTypedRuleContext(ValueContext::class, 0);
-        }
-
-        public function accept(ParseTreeVisitor $visitor)
-        {
-            if ($visitor instanceof EZQLVisitor) {
-                return $visitor->visitLocationPriorityExpr($this);
-            }
-
-            return $visitor->visitChildren($this);
-        }
-    }
-
-    class FulltextExprContext extends ExprContext
-    {
-        /**
-         * @var ValueContext|null
-         */
-        public $val;
-
-        public function __construct(ExprContext $context)
-        {
-            parent::__construct($context);
-
-            $this->copyFrom($context);
-        }
-
-        public function K_FULLTEXT(): ?TerminalNode
-        {
-            return $this->getToken(EZQLParser::K_FULLTEXT, 0);
-        }
-
-        public function value(): ?ValueContext
-        {
-            return $this->getTypedRuleContext(ValueContext::class, 0);
-        }
-
-        public function fuzziness(): ?FuzzinessContext
-        {
-            return $this->getTypedRuleContext(FuzzinessContext::class, 0);
-        }
-
-        public function boosting(): ?BoostingContext
-        {
-            return $this->getTypedRuleContext(BoostingContext::class, 0);
-        }
-
-        public function accept(ParseTreeVisitor $visitor)
-        {
-            if ($visitor instanceof EZQLVisitor) {
-                return $visitor->visitFulltextExpr($this);
-            }
-
-            return $visitor->visitChildren($this);
-        }
-    }
-
-    class CriterionExprContext extends ExprContext
-    {
-        /**
-         * @var Token|null
-         */
-        public $clazz;
-
-        /**
-         * @var OperatorContext|null
-         */
-        public $op;
-
-        /**
-         * @var ValueContext|null
-         */
-        public $val;
-
-        public function __construct(ExprContext $context)
-        {
-            parent::__construct($context);
-
-            $this->copyFrom($context);
-        }
-
-        public function ID(): ?TerminalNode
-        {
-            return $this->getToken(EZQLParser::ID, 0);
+            return $this->getToken(EZQLParser::K_ID, 0);
         }
 
         public function operator(): ?OperatorContext
@@ -2610,7 +3521,7 @@ namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser\Context 
         public function accept(ParseTreeVisitor $visitor)
         {
             if ($visitor instanceof EZQLVisitor) {
-                return $visitor->visitCriterionExpr($this);
+                return $visitor->visitContentTypeIdExpr($this);
             }
 
             return $visitor->visitChildren($this);

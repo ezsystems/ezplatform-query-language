@@ -15,6 +15,7 @@ use eZ\Publish\API\Repository\Values\Content\Query\Criterion\DateMetadata;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\Field;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\FieldRelation;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\IsFieldEmpty;
+use eZ\Publish\API\Repository\Values\Content\Query\Criterion\Location\Depth;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\Location\IsMainLocation;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\Location\Priority;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion\LogicalNot;
@@ -42,8 +43,8 @@ final class QueryVisitor extends EZQLBaseVisitor
 
     public function __construct(array $criterions, array $parameters = [])
     {
-        $this->parameters = $parameters;
         $this->criterions = $criterions;
+        $this->parameters = $parameters;
     }
 
     public function visitSelectContent(Context\SelectContentContext $context): QueryVisitorResult
@@ -284,6 +285,18 @@ final class QueryVisitor extends EZQLBaseVisitor
         );
     }
 
+    public function visitLocationDepthExpr(Context\LocationDepthExprContext $context): Criterion
+    {
+        $value = $context->val->accept($this);
+
+        return $this->resolveNegation(
+            static function (string $op) use ($value): Criterion {
+                return new Depth($op, $value);
+            },
+            $context->op->accept($this)
+        );
+    }
+
     public function visitVisibilityExpr(Context\VisibilityExprContext $context): Criterion
     {
         switch ($context->flag->getType()) {
@@ -351,6 +364,66 @@ final class QueryVisitor extends EZQLBaseVisitor
             $context->field->getText(),
             $context->val->accept($this),
         ];
+    }
+
+    public function visitAncestorExpr(Context\AncestorExprContext $context): Criterion
+    {
+        return new Criterion\Ancestor($context->val->accept($this));
+    }
+
+    public function visitContentIdExpr(Context\ContentIdExprContext $context): Criterion
+    {
+        return new Criterion\ContentId($context->val->accept($this));
+    }
+
+    public function visitContentTypeIdExpr(Context\ContentTypeIdExprContext $context): Criterion
+    {
+        return new Criterion\ContentTypeId($context->val->accept($this));
+    }
+
+    public function visitContentTypeIdentifierExpr(Context\ContentTypeIdentifierExprContext $context): Criterion
+    {
+        return new Criterion\ContentTypeIdentifier($context->val->accept($this));
+    }
+
+    public function visitLanguageCodeExpr(Context\LanguageCodeExprContext $context): Criterion
+    {
+        return new Criterion\LanguageCode($context->val->accept($this));
+    }
+
+    public function visitLocationIdExpr(Context\LocationIdExprContext $context): Criterion
+    {
+        return new Criterion\LocationId($context->val->accept($this));
+    }
+
+    public function visitLocationRemoteIdExpr(Context\LocationRemoteIdExprContext $context): Criterion
+    {
+        return new Criterion\RemoteId($context->val->accept($this));
+    }
+
+    public function visitObjectStateIdExpr(Context\ObjectStateIdExprContext $context): Criterion
+    {
+        return new Criterion\ObjectStateId($context->val->accept($this));
+    }
+
+    public function visitParentLocationIdExpr(Context\ParentLocationIdExprContext $context): Criterion
+    {
+        return new Criterion\ParentLocationId($context->val->accept($this));
+    }
+
+    public function visitRemoteIdExpr(Context\RemoteIdExprContext $context): Criterion
+    {
+        return new Criterion\RemoteId($context->val->accept($this));
+    }
+
+    public function visitSectionIdExpr(Context\SectionIdExprContext $context): Criterion
+    {
+        return new Criterion\SectionId($context->val->accept($this));
+    }
+
+    public function visitSubtreeExpr(Context\SubtreeExprContext $context): Criterion
+    {
+        return new Criterion\Subtree($context->val->accept($this));
     }
 
     public function visitCriterionExpr(Context\CriterionExprContext $context): Criterion

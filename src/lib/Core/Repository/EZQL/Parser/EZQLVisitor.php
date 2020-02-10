@@ -4,6 +4,7 @@
  * @copyright Copyright (C) eZ Systems AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+
 namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser;
 
 use Antlr\Antlr4\Runtime\Tree\ParseTreeVisitor;
@@ -86,16 +87,6 @@ interface EZQLVisitor extends ParseTreeVisitor
     public function visitSortOrder(Context\SortOrderContext $context);
 
     /**
-     * Visit a parse tree produced by the `userMetadataExpr` labeled alternative
-     * in {@see EZQLParser::expr()}.
-     *
-     * @param Context\UserMetadataExprContext $context The parse tree.
-     *
-     * @return mixed The visitor result.
-     */
-    public function visitUserMetadataExpr(Context\UserMetadataExprContext $context);
-
-    /**
      * Visit a parse tree produced by the `isFieldEmptyExpr` labeled alternative
      * in {@see EZQLParser::expr()}.
      *
@@ -116,6 +107,146 @@ interface EZQLVisitor extends ParseTreeVisitor
     public function visitFieldRelationExpr(Context\FieldRelationExprContext $context);
 
     /**
+     * Visit a parse tree produced by the `locationRemoteIdExpr` labeled alternative
+     * in {@see EZQLParser::expr()}.
+     *
+     * @param Context\LocationRemoteIdExprContext $context The parse tree.
+     *
+     * @return mixed The visitor result.
+     */
+    public function visitLocationRemoteIdExpr(Context\LocationRemoteIdExprContext $context);
+
+    /**
+     * Visit a parse tree produced by the `visibilityExpr` labeled alternative
+     * in {@see EZQLParser::expr()}.
+     *
+     * @param Context\VisibilityExprContext $context The parse tree.
+     *
+     * @return mixed The visitor result.
+     */
+    public function visitVisibilityExpr(Context\VisibilityExprContext $context);
+
+    /**
+     * Visit a parse tree produced by the `contentIdExpr` labeled alternative
+     * in {@see EZQLParser::expr()}.
+     *
+     * @param Context\ContentIdExprContext $context The parse tree.
+     *
+     * @return mixed The visitor result.
+     */
+    public function visitContentIdExpr(Context\ContentIdExprContext $context);
+
+    /**
+     * Visit a parse tree produced by the `remoteIdExpr` labeled alternative
+     * in {@see EZQLParser::expr()}.
+     *
+     * @param Context\RemoteIdExprContext $context The parse tree.
+     *
+     * @return mixed The visitor result.
+     */
+    public function visitRemoteIdExpr(Context\RemoteIdExprContext $context);
+
+    /**
+     * Visit a parse tree produced by the `objectStateIdExpr` labeled alternative
+     * in {@see EZQLParser::expr()}.
+     *
+     * @param Context\ObjectStateIdExprContext $context The parse tree.
+     *
+     * @return mixed The visitor result.
+     */
+    public function visitObjectStateIdExpr(Context\ObjectStateIdExprContext $context);
+
+    /**
+     * Visit a parse tree produced by the `languageCodeExpr` labeled alternative
+     * in {@see EZQLParser::expr()}.
+     *
+     * @param Context\LanguageCodeExprContext $context The parse tree.
+     *
+     * @return mixed The visitor result.
+     */
+    public function visitLanguageCodeExpr(Context\LanguageCodeExprContext $context);
+
+    /**
+     * Visit a parse tree produced by the `isMainLocationExpr` labeled alternative
+     * in {@see EZQLParser::expr()}.
+     *
+     * @param Context\IsMainLocationExprContext $context The parse tree.
+     *
+     * @return mixed The visitor result.
+     */
+    public function visitIsMainLocationExpr(Context\IsMainLocationExprContext $context);
+
+    /**
+     * Visit a parse tree produced by the `locationPriorityExpr` labeled alternative
+     * in {@see EZQLParser::expr()}.
+     *
+     * @param Context\LocationPriorityExprContext $context The parse tree.
+     *
+     * @return mixed The visitor result.
+     */
+    public function visitLocationPriorityExpr(Context\LocationPriorityExprContext $context);
+
+    /**
+     * Visit a parse tree produced by the `contentTypeIdentifierExpr` labeled alternative
+     * in {@see EZQLParser::expr()}.
+     *
+     * @param Context\ContentTypeIdentifierExprContext $context The parse tree.
+     *
+     * @return mixed The visitor result.
+     */
+    public function visitContentTypeIdentifierExpr(Context\ContentTypeIdentifierExprContext $context);
+
+    /**
+     * Visit a parse tree produced by the `locationIdExpr` labeled alternative
+     * in {@see EZQLParser::expr()}.
+     *
+     * @param Context\LocationIdExprContext $context The parse tree.
+     *
+     * @return mixed The visitor result.
+     */
+    public function visitLocationIdExpr(Context\LocationIdExprContext $context);
+
+    /**
+     * Visit a parse tree produced by the `fulltextExpr` labeled alternative
+     * in {@see EZQLParser::expr()}.
+     *
+     * @param Context\FulltextExprContext $context The parse tree.
+     *
+     * @return mixed The visitor result.
+     */
+    public function visitFulltextExpr(Context\FulltextExprContext $context);
+
+    /**
+     * Visit a parse tree produced by the `parentLocationIdExpr` labeled alternative
+     * in {@see EZQLParser::expr()}.
+     *
+     * @param Context\ParentLocationIdExprContext $context The parse tree.
+     *
+     * @return mixed The visitor result.
+     */
+    public function visitParentLocationIdExpr(Context\ParentLocationIdExprContext $context);
+
+    /**
+     * Visit a parse tree produced by the `criterionExpr` labeled alternative
+     * in {@see EZQLParser::expr()}.
+     *
+     * @param Context\CriterionExprContext $context The parse tree.
+     *
+     * @return mixed The visitor result.
+     */
+    public function visitCriterionExpr(Context\CriterionExprContext $context);
+
+    /**
+     * Visit a parse tree produced by the `userMetadataExpr` labeled alternative
+     * in {@see EZQLParser::expr()}.
+     *
+     * @param Context\UserMetadataExprContext $context The parse tree.
+     *
+     * @return mixed The visitor result.
+     */
+    public function visitUserMetadataExpr(Context\UserMetadataExprContext $context);
+
+    /**
      * Visit a parse tree produced by the `matchAllExpr` labeled alternative
      * in {@see EZQLParser::expr()}.
      *
@@ -124,6 +255,16 @@ interface EZQLVisitor extends ParseTreeVisitor
      * @return mixed The visitor result.
      */
     public function visitMatchAllExpr(Context\MatchAllExprContext $context);
+
+    /**
+     * Visit a parse tree produced by the `locationDepthExpr` labeled alternative
+     * in {@see EZQLParser::expr()}.
+     *
+     * @param Context\LocationDepthExprContext $context The parse tree.
+     *
+     * @return mixed The visitor result.
+     */
+    public function visitLocationDepthExpr(Context\LocationDepthExprContext $context);
 
     /**
      * Visit a parse tree produced by the `orExpr` labeled alternative
@@ -156,14 +297,14 @@ interface EZQLVisitor extends ParseTreeVisitor
     public function visitInnerExpr(Context\InnerExprContext $context);
 
     /**
-     * Visit a parse tree produced by the `visibilityExpr` labeled alternative
+     * Visit a parse tree produced by the `subtreeExpr` labeled alternative
      * in {@see EZQLParser::expr()}.
      *
-     * @param Context\VisibilityExprContext $context The parse tree.
+     * @param Context\SubtreeExprContext $context The parse tree.
      *
      * @return mixed The visitor result.
      */
-    public function visitVisibilityExpr(Context\VisibilityExprContext $context);
+    public function visitSubtreeExpr(Context\SubtreeExprContext $context);
 
     /**
      * Visit a parse tree produced by the `fieldExpr` labeled alternative
@@ -186,6 +327,16 @@ interface EZQLVisitor extends ParseTreeVisitor
     public function visitModifiedExpr(Context\ModifiedExprContext $context);
 
     /**
+     * Visit a parse tree produced by the `ancestorExpr` labeled alternative
+     * in {@see EZQLParser::expr()}.
+     *
+     * @param Context\AncestorExprContext $context The parse tree.
+     *
+     * @return mixed The visitor result.
+     */
+    public function visitAncestorExpr(Context\AncestorExprContext $context);
+
+    /**
      * Visit a parse tree produced by the `matchNoneExpr` labeled alternative
      * in {@see EZQLParser::expr()}.
      *
@@ -206,6 +357,16 @@ interface EZQLVisitor extends ParseTreeVisitor
     public function visitIsNotFieldEmptyExpr(Context\IsNotFieldEmptyExprContext $context);
 
     /**
+     * Visit a parse tree produced by the `sectionIdExpr` labeled alternative
+     * in {@see EZQLParser::expr()}.
+     *
+     * @param Context\SectionIdExprContext $context The parse tree.
+     *
+     * @return mixed The visitor result.
+     */
+    public function visitSectionIdExpr(Context\SectionIdExprContext $context);
+
+    /**
      * Visit a parse tree produced by the `createdExpr` labeled alternative
      * in {@see EZQLParser::expr()}.
      *
@@ -216,44 +377,14 @@ interface EZQLVisitor extends ParseTreeVisitor
     public function visitCreatedExpr(Context\CreatedExprContext $context);
 
     /**
-     * Visit a parse tree produced by the `isMainLocationExpr` labeled alternative
+     * Visit a parse tree produced by the `contentTypeIdExpr` labeled alternative
      * in {@see EZQLParser::expr()}.
      *
-     * @param Context\IsMainLocationExprContext $context The parse tree.
+     * @param Context\ContentTypeIdExprContext $context The parse tree.
      *
      * @return mixed The visitor result.
      */
-    public function visitIsMainLocationExpr(Context\IsMainLocationExprContext $context);
-
-    /**
-     * Visit a parse tree produced by the `locationPriorityExpr` labeled alternative
-     * in {@see EZQLParser::expr()}.
-     *
-     * @param Context\LocationPriorityExprContext $context The parse tree.
-     *
-     * @return mixed The visitor result.
-     */
-    public function visitLocationPriorityExpr(Context\LocationPriorityExprContext $context);
-
-    /**
-     * Visit a parse tree produced by the `fulltextExpr` labeled alternative
-     * in {@see EZQLParser::expr()}.
-     *
-     * @param Context\FulltextExprContext $context The parse tree.
-     *
-     * @return mixed The visitor result.
-     */
-    public function visitFulltextExpr(Context\FulltextExprContext $context);
-
-    /**
-     * Visit a parse tree produced by the `criterionExpr` labeled alternative
-     * in {@see EZQLParser::expr()}.
-     *
-     * @param Context\CriterionExprContext $context The parse tree.
-     *
-     * @return mixed The visitor result.
-     */
-    public function visitCriterionExpr(Context\CriterionExprContext $context);
+    public function visitContentTypeIdExpr(Context\ContentTypeIdExprContext $context);
 
     /**
      * Visit a parse tree produced by the `andExpr` labeled alternative
