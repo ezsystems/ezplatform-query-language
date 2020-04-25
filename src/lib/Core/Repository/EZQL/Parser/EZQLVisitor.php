@@ -4,7 +4,6 @@
  * @copyright Copyright (C) eZ Systems AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
-
 namespace EzSystems\EzPlatformQueryLanguage\Core\Repository\EZQL\Parser;
 
 use Antlr\Antlr4\Runtime\Tree\ParseTreeVisitor;
