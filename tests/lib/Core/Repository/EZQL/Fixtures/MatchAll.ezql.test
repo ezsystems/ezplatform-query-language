@@ -1,0 +1,36 @@
+SELECT CONTENT FILTER BY MATCH ALL
+--EXPECTED OUTPUT--
+<?php
+
+namespace App\QueryType;
+
+declare(strict_types=1);
+
+use eZ\Publish\API\Repository\Values\Content\Query;
+use eZ\Publish\API\Repository\Values\Content\Query\Criterion\MatchAll;
+
+class ExampleQuery implements \eZ\Publish\Core\QueryType\QueryType
+{
+
+    public function getQuery(array $parameters = []) : \eZ\Publish\API\Repository\Values\Content\Query
+    {
+        $query = new Query();
+        $query->filter = new eZ\Publish\API\Repository\Values\Content\Query\Criterion\MatchAll(
+        );
+
+        return $query;
+    }
+
+    public function getName() : string
+    {
+        return "ExampleQuery";
+    }
+
+    public function getSupportedParameters() : array
+    {
+        return [];
+    }
+
+
+}
+
